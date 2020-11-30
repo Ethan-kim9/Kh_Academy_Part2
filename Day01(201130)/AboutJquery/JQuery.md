@@ -21,3 +21,47 @@
 
 
   ## 1. Scriptlet : JAVA code Area   <% %>
+
+  ```jsp
+  
+  <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+  
+  <%@ // 지시문(Direction) : 페이지의 성격을 정의한다.
+
+  <%!
+  %> 
+  
+  // 선언문 :
+  
+  <%
+  $('#header').css('color','#f00');
+  %> 
+  // 이런식으로 헤더를 불러오고 css를 적용시킬 수 있다.
+  ```
+  
+### 1.1 jQuery 문법
+
+  CSS
+  ```css
+  id : #ele
+  class : .ele
+
+  #ele > ele
+  #ele ele
+  #ele[]
+  
+ /* { . . . } -> 를 $ 로 대체
+ $(ele).css(key,value)
+ */ 
+```
+
+# 2. DOM ? Document Object Model
+: HTML 을 트리구조료 표현한 것
+- Selectors, Attributes, Travrsing , Manipulation, CSS
+- Event, Effects, Ajax
+
+
+# 3. JSON
+- 1. KEY: VALUE => {KEY : VALUE, KEY:VALUE, ...}
+- 2. 배열 => [v1, v2, v3]

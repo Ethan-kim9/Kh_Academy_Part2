@@ -4,11 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Intro with CDN</title>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </head>
 <body>
 <%
 	out.print("hi jQuery");
 %>
+
+<header>
+<h1 id = 'header'> Tag for jQueryTest</h1>
+</header>
+<script>
+$('#header').css('color','#ff0000');
+</script>
 </body>
 </html>
