@@ -18,3 +18,6 @@
   이부분에서 오류가 생기는 경우는, Tomcat 라이브러리 임포트가 잘못된 경우이다.
 
   -Project - properties 를 통해서 해결 가능하다.(라이브러리 추가)
+
+
+  ## 1. Scriptlet : JAVA code Area   <% %>
