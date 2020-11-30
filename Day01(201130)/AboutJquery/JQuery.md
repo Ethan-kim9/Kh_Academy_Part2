@@ -55,7 +55,8 @@
  $(ele).css(key,value)
  */ 
 ```
-
+CSS 의 경우 link 태그를 사용하는데,
+jQuery 에선 Script 태그를 사용한다.
 # 2. DOM ? Document Object Model
 : HTML 을 트리구조료 표현한 것
 - Selectors, Attributes, Travrsing , Manipulation, CSS
@@ -65,3 +66,41 @@
 # 3. JSON
 - 1. KEY: VALUE => {KEY : VALUE, KEY:VALUE, ...}
 - 2. 배열 => [v1, v2, v3]
+
+
+---
+
+### 동적삽입과 정적삽입?
+
+?와 &?
+파라미터에 대해서,
+ 변수명 = 변수의 값 
+
+```
+http://localhost:8888/Kh-Web-01/index.jsp
+http://localhost:8888/Kh-Web-01/index.jsp?inc=intro.jsp
+
+```
+
+```jsp
+<%
+	String inc = "./jQuery/filter.jsp";
+	if(request.getParameter("inc") !=null){
+		inc =request.getParameter("inc");
+	}
+	
+%>
+```
+두 가지 경우의 수 확인하기,
+inc라는 파라미터를 주소창을 통해서 직접 넣어줄 수도 있다.
+
+inc 라는 파라미터의 값이 없을 경우 표시할 내용과 값이 있을경우 표시할 내용을 지정할 수 있다.
+
+### MVC 패턴
+
+- Model (Data)
+- View (UI,UX) 
+  - DI
+  - IOC
+  - API
+- Control (code)
