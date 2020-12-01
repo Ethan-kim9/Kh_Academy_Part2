@@ -13,24 +13,25 @@
 	if (request.getParameter("inc") != null) {
 		inc = request.getParameter("inc");
 	}
-	
 	%>
-	
-	
+
+
 	<%
-	//Sub
+		//Sub
 	String sub = "./jQuery/menu.jsp";
-	if(request.getParameter("sub") != null){
-		inc = request.getParameter("sub");
+	if (request.getParameter("sub") != null) {
+		sub = request.getParameter("sub");
 	}
-%>
-	
+	%>
+
 	<div id='index'>
 		<header id='header'>
 			<nav id='navigation'>
 				<ul>
 					<li><a href='index.jsp'>HOME</a></li>
-					<li><a href='index.jsp?inc=./jQuery/menu.jsp'>JQUERY</a></li>
+					<li><a href='index.jsp?sub=./jQuery/menu.jsp'>JQUERY</a></li>
+					<li><a href='index.jsp?sub=./aJax/menu.jsp'>AJAX</a></li>
+					<li><a href='index.jsp?sub=./myBatis/menu.jsp'>MYBATIS</a></li>
 					<li>공</li>
 					<li>사</li>
 					<li>중</li>
@@ -39,13 +40,18 @@
 		</header>
 		<section id='contents'>
 			<article class='content'>
-				<jsp:include page="<%=inc%>"></jsp:include>
+				<jsp:include page="<%=inc%>" />
 				<!-- inc 파라미터를 이용한 JSP 동적삽입 -->
 			</article>
+			
 			<aside>
 				<!-- 가상의 이미지 영역을 설정해주겠다. -->
 				<img src='http://placehold.it/150X100'>
+				<div id='sub_menu'>
+					<jsp:include page="<%=sub%>" />
+				</div>
 			</aside>
+			
 		</section>
 		<footer id='footer'> 융합 S/W 개발</footer>
 	</div>
@@ -62,27 +68,25 @@
 
 		$('a').css('text-decoration', 'none'); // 링크의 언더라인을 제거함
 
-
 		//index 페이지의 넓이와 중앙으로 배치
 		$('#index').css('width', '800px');
 		$('#index').css('margin', 'auto');
 
 		//header의 높이와 색을 지정
-	$('#index>#header').css('height','150px');
-	$('#index>#header').css('background-color','#ccc');
-	$('#index>#header').css('margin-top','5px');
-	$('#index>#header').css('position', 'relative');
-		
-		
+		$('#index>#header').css('height', '150px');
+		$('#index>#header').css('background-color', '#ccc');
+		$('#index>#header').css('margin-top', '5px');
+		$('#index>#header').css('position', 'relative');
+
 		$('#header > #navigation').css({
 			'position' : 'absolute',
-			'right'	   : '2px',
-			'bottom'   : '2px'
-			});
+			'right' : '2px',
+			'bottom' : '2px'
+		});
 
 		$('#header > #navigation > ul').css({
 			'list-style' : 'none'
-			});
+		});
 
 		$('#header > #navigation > ul > li').css({
 			'display' : 'inline-block',
@@ -98,8 +102,7 @@
 				'0 8px 8px 0');
 
 		//Header 설정 끝
-		
-		
+
 		//Content 설정
 
 		//contents 는 최소높이만
@@ -116,7 +119,6 @@
 		 */
 
 		// JSON 표기법으로 footer 높이와 바탕색을 정하는법
-		
 		$('#index>#footer').css({
 			'height' : '100px',
 			'background-color' : '#bbb',
@@ -134,9 +136,17 @@
 			'float' : 'left'
 		});
 
-		$('#index > #contents > .aside').css({
+		$('#index > #contents > aside').css({
 			'width' : '150px',
-			'float' : 'right'
+			'float' : 'left'
+		});
+
+		$('#index > #contents > aside > #sub_menu').css({
+			'width' : '150px'
+		});
+
+		$('#index > #contents > aside > #sub_menu > ol').css({
+			'margin-left' : '20px'
 		});
 	</script>
 </body>
