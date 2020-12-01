@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>traverse</title>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 </head>
 <body>
@@ -31,37 +32,56 @@
 			<li>속리산</li>
 			<li>한라산</li>
 		</ul>
-		<div id = 'div1'>		
-			<input type='button' value='x' class='btn1'/>
+		<div id='div1'>
+			<input type='button' value='x' class='btn1' />
 		</div>
-		<div id = 'div2'>		
-			<input type='button' value='x' class='btn2'/>
+		<div id='div2'>
+			<input type='button' value='x' class='btn2' />
 		</div>
-		
+
 	</div>
 	<script>
 		$('#traverse > ul > li').first().css('color', '#f00');
 		$('#traverse > ul > li').filter(':odd').css('color', '#00f');
-		$('#traverse > ul > li').slice(1,4).css('font-family','궁서체');
-
+		$('#traverse > ul > li').slice(1, 4).css('font-family', '궁서체');
 
 		// 1) div 1, div2 의 넓이와 높이를 지정하시오.
-		
+
 		$('#traverse > div').css({
 			'width' : '300px',
-			'height': '300px'
-			});
+			'height' : '300px'
+		});
 
-		// 2) btn 1, btn2 의 넓이와 높이를 지정하시오
+		// 2) btn 1, btn2 의 넓이와 높이를 지정하시오.
+
 		$('#traverse > div > .btn1').css({
-			'width' : '300px',
-			'height': '300px'
-			});
+			'width' : '120px',
+			'height' : '80px'
+		});
 
 		$('#traverse > div > .btn2').css({
-			'width' : '300px',
-			'height': '300px'
-			});
+			'width' : '120px',
+			'height' : '80px'
+		});
+
+		// btn1, btn2 의 이벤트 처리
+
+		let btn1 = $('.btn1')[0]; // 클래스는 기본적으로 중복이 가능하기에 배열로 선언
+		let btn2 = $('.btn2')[0]; // 클래스는 기본적으로 중복이 가능하기에 배열로 선언 
+
+
+		btn1.onclick = function() {
+			alert('얍');
+			let btnBox1 = $(btn1).parent();
+			$(btnBox1).css('background-color' , 'red');
+		}
+
+		btn2.onclick = function() {
+			alert('얍얍얍');
+			let btnBox2 = $(btn2).parent();
+			$(btnBox2).css('background-color' , 'tomato');
+		}
+		
 	</script>
 </body>
 </html>
