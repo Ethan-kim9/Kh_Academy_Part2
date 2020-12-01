@@ -1,14 +1,27 @@
 # jQuery
 
-- 남은 진도
 
-1. Semi Project
-2. jquery
-3. mybatis
-4. jsp + servlet
-5. Spring
-6. final project
+복습
 
+-----
+
+1. html + CSS + javascript를 통합한 `라이브러리`
+2. 쉬운 접근방법을 제공 : 전체 랜더링 속도가 떨어진다.
+3. Javascript 문법을 그대로 사용함
+4. 대소문자는 구별하지만 ''와 ""는 구별하지 않는다. - Javascript
+
+사용법 
+
+    1. CDN
+    2. 라이브러리를 해당 프로젝트내에 복사해 사용.
+   
+### JavaScript의 선언에 대해
+
+1. Var : 로컬변수임을 나타낸다. (Function-scope)
+2. let: (block-scope)
+3. Const : 상수
+
+---
 
 모든 개발도구 설정시 꼭 확인해야할 것!
 
