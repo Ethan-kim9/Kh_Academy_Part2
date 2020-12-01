@@ -31,11 +31,37 @@
 			<li>속리산</li>
 			<li>한라산</li>
 		</ul>
+		<div id = 'div1'>		
+			<input type='button' value='x' class='btn1'/>
+		</div>
+		<div id = 'div2'>		
+			<input type='button' value='x' class='btn2'/>
+		</div>
+		
 	</div>
 	<script>
 		$('#traverse > ul > li').first().css('color', '#f00');
 		$('#traverse > ul > li').filter(':odd').css('color', '#00f');
 		$('#traverse > ul > li').slice(1,4).css('font-family','궁서체');
+
+
+		// 1) div 1, div2 의 넓이와 높이를 지정하시오.
+		
+		$('#traverse > div').css({
+			'width' : '300px',
+			'height': '300px'
+			});
+
+		// 2) btn 1, btn2 의 넓이와 높이를 지정하시오
+		$('#traverse > div > .btn1').css({
+			'width' : '300px',
+			'height': '300px'
+			});
+
+		$('#traverse > div > .btn2').css({
+			'width' : '300px',
+			'height': '300px'
+			});
 	</script>
 </body>
 </html>
