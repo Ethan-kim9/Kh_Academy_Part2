@@ -119,6 +119,7 @@
 		 */
 
 		// JSON 표기법으로 footer 높이와 바탕색을 정하는법
+		
 		$('#index>#footer').css({
 			'height' : '100px',
 			'background-color' : '#bbb',

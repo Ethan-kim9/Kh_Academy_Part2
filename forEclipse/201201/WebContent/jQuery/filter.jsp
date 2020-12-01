@@ -37,8 +37,7 @@
 		<div>방가</div>
 		<div>방가</div>
 		<div>방가</div>
-		</div>
-		
+		</div>	
 	</div>
 
 	<script>
