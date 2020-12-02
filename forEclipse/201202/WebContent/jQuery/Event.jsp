@@ -67,7 +67,7 @@ $ ('#keyup >.gender').keyup(function(){
 	let genderToString = '';
 	if(userGender%2 == 0){genderToString = '여성입니다.';}
 	else{genderToString = '남성입니다.';}
-	$('.keyupresult').text(genderToString);
+	$('.keyupresult').html(genderToString);
 });
 
 </script>
