@@ -49,6 +49,8 @@
 				<img src='http://placehold.it/150X100'>
 				<div id='sub_menu'>
 					<jsp:include page="<%=sub%>" />
+				<!-- Sub 파라미터를 이용한 JSP 동적삽입 -->
+					
 				</div>
 			</aside>
 			
