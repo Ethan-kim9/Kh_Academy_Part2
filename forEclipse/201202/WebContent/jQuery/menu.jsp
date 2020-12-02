@@ -12,7 +12,8 @@
 	<ol>
 		<li><a href='index.jsp?inc=./jQuery/filter.jsp'>FILTER</a></li>
 		<li><a href='index.jsp?inc=./jQuery/traverse.jsp'>TRAVERSE</a></li>
-				<li><a href='index.jsp?inc=./jQuery/manipulation.jsp'>MANIPULATION</a></li>
+		<li><a href='index.jsp?inc=./jQuery/manipulation.jsp'>MANIPULATION</a></li>
+		<li><a href='index.jsp?inc=./jQuery/Core.jsp'>CORE</a></li>
 	</ol>
 </body>
 </html>
