@@ -61,7 +61,12 @@ $('#buttonFadeIn').on('click', function(){
 $('#buttonFadeOut').on('click', function(){
 	$('.target').fadeOut(700);
 });
-
+$('#buttonAnimation').on('click', function(){
+	$('.target').animate({
+		'width' : 'toggle',
+		'opacity' : 'toggle'
+		});
+});
 </script>
 </body>
 </html>

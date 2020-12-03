@@ -18,6 +18,8 @@
 		<li><a href='index.jsp?inc=./jQuery/Event.jsp'>EVENT</a></li>
 		<li><a href='index.jsp?inc=./jQuery/Event2.jsp'>EVENT2</a></li>	
 		<li><a href='index.jsp?inc=./jQuery/Effect.jsp'>EFFECT</a></li>	
+		<li><a href='index.jsp?inc=./jQuery/Tabs.jsp'>Tabs</a></li>	
+		
 		
 	</ol>
 </body>
