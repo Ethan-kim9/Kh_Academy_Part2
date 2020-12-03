@@ -17,6 +17,7 @@
 		<li><a href='index.jsp?inc=./jQuery/attribute.jsp'>ATTRIBUTE</a></li>	
 		<li><a href='index.jsp?inc=./jQuery/Event.jsp'>Event</a></li>
 		<li><a href='index.jsp?inc=./jQuery/Event2.jsp'>Event2</a></li>	
+		<li><a href='index.jsp?inc=./jQuery/Effect.jsp'>EFFECT</a></li>	
 			
 		
 		
