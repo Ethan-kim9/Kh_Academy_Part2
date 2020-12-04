@@ -13,15 +13,17 @@
 .items{
 	list-style: none;
 }
-.items>li{
-		background-color: powderblue;
-		border: 1px solid blue;
-		list-style: none;
-		width: 120px;
-		height: 40px;
-		text-align: center;
-		line-height: 50px;
-	}
+.items > li{
+ 	border: 2px dotted ivory;
+ 	width: 100px;
+	text-align: center;
+	background-color: powderblue;
+	color:brown;		
+}
+
+.items > li:hover{
+	cursor : pointer; /*UX에 해당하는 부분*/
+}
 
 </style>
 

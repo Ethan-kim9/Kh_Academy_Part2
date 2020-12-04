@@ -21,6 +21,9 @@
 		<li><a href='index.jsp?inc=./jQuery/Tabs.jsp'>Tabs</a></li>	
 		<li><a href='index.jsp?inc=./jQuery/DragAndDrop.jsp'>DragAndDrop</a></li>	
 		<li><a href='index.jsp?inc=./jQuery/Sorterble.jsp'>SORTERBLE</a></li>	
+		<li><a href='index.jsp?inc=./jQuery/Sorterble.jsp'>Accordian</a></li>	
+		<li><a href='index.jsp?inc=./jQuery/Autocomplete.jsp'>AUTOCOMPLETE</a></li>	
+		
 	</ol>
 </body>
 </html>
