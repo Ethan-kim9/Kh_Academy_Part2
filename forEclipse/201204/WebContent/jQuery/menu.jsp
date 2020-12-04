@@ -19,7 +19,8 @@
 		<li><a href='index.jsp?inc=./jQuery/Event2.jsp'>EVENT2</a></li>	
 		<li><a href='index.jsp?inc=./jQuery/Effect.jsp'>EFFECT</a></li>	
 		<li><a href='index.jsp?inc=./jQuery/Tabs.jsp'>Tabs</a></li>	
-		<li><a href='index.jsp?inc=./jQuery/Drag.jsp'>Drag</a></li>	
+		<li><a href='index.jsp?inc=./jQuery/DragAndDrop.jsp'>DragAndDrop</a></li>	
+		<li><a href='index.jsp?inc=./jQuery/Sorterble.jsp'>SORTERBLE</a></li>	
 	</ol>
 </body>
 </html>
