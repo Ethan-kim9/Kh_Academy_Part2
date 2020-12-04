@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src='./resources/jquery-3.5.1.slim.min.js'></script>
-<link rel='stylesheet' type='text/css'
-   href='https://code.jquery.com/ui/1.12.1/themes/south-street/jquery-ui.css'/>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" 
+	        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+	        crossorigin="anonymous"></script>   
+   
 <meta charset="UTF-8">
 <title>index with Library</title>
 </head>
