@@ -4,6 +4,8 @@
 <html>
 <head>
 <script src='./resources/jquery-3.5.1.slim.min.js'></script>
+<link rel='stylesheet' type='text/css'
+   href='https://code.jquery.com/ui/1.12.1/themes/south-street/jquery-ui.css'/>
 <meta charset="UTF-8">
 <title>index with Library</title>
 </head>
