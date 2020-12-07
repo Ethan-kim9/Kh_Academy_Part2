@@ -10,5 +10,8 @@
 </head>
 <body>
 <H3>AJAX</H3>
+<ol>
+ 	<li><a href = 'index.jsp?sub=./aJax/menu.jsp&inc=./aJax/begin.jsp'>Begin</a></li>
+</ol>
 </body>
 </html>

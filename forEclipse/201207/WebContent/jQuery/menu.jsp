@@ -22,7 +22,9 @@
 		<li><a href='index.jsp?inc=./jQuery/DragAndDrop.jsp'>DragAndDrop</a></li>	
 		<li><a href='index.jsp?inc=./jQuery/Sorterble.jsp'>SORTERBLE</a></li>	
 		<li><a href='index.jsp?inc=./jQuery/Sorterble.jsp'>Accordian</a></li>	
-		<li><a href='index.jsp?inc=./jQuery/Autocomplete.jsp'>AUTOCOMPLETE</a></li>	
+		<li><a href='index.jsp?inc=./jQuery/Autocomplete.jsp'>AUTOCOMPLETE</a></li>
+		<li><a href='index.jsp?inc=./jQuery/menu_ui.jsp'>MENU</a></li>	
+			
 		
 	</ol>
 </body>
