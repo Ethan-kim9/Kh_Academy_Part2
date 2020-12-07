@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Empdao {
+public class EmpDao {
 	Connection connection;
 	PreparedStatement preparedStatement;
 	ResultSet resultSet;
 	
-	public Empdao() {
+	public EmpDao() {
 		connection = new Application().getConn();
 	}
 	
