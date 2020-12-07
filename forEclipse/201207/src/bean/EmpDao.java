@@ -22,10 +22,10 @@ public class EmpDao {
 		List<EmpVo> list = new ArrayList<>();
 		
 		try {
-			String sql  = "SELECT * FROM hr.employees"
-						+ "WHERE first_name LIKE ?"
-						+ "OR email LIKE ?"
-						+ "OR Phone_number LIKE ?";
+			String sql  = "SELECT * FROM hr.employees "
+						+ "WHERE first_name LIKE ? "
+						+ "OR email LIKE ? "
+						+ "OR Phone_number LIKE ? ";
 			
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1,"%" + findString + "%");
@@ -33,20 +33,23 @@ public class EmpDao {
 			preparedStatement.setString(3,"%" + findString + "%");
 			
 			resultSet = preparedStatement.executeQuery();
+			
 			while(resultSet.next()) {
+				
 				EmpVo vo = new EmpVo();
-				vo.setEmployee_id(resultSet.getLong("employee_id"));
+				vo.setEmployee_id(resultSet.getInt("employee_id"));
 				vo.setFirst_name(resultSet.getString("first_name"));
 				vo.setEmail(resultSet.getString("email"));
 				vo.setPhone_number(resultSet.getString("phone_number"));
-				vo.setSalary(resultSet.getLong("salary"));
+				vo.setSalary(resultSet.getDouble("salary"));
 				
 				list.add(vo);
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			try { connection.close();			
+			try { 
+				connection.close();			
 			}catch (SQLException e) {
 				e.printStackTrace();
 			}

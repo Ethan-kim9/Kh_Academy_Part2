@@ -1,16 +1,16 @@
 package bean;
 
 public class EmpVo {
-	long employee_id;
+	int employee_id;
 	String first_name;
 	String email;
 	String phone_number;
-	long salary;
+	double salary;
 	
-	public long getEmployee_id() {
+	public int getEmployee_id(){
 		return employee_id;
 	}
-	public void setEmployee_id(long employee_id) {
+	public void setEmployee_id(int employee_id) {
 		this.employee_id = employee_id;
 	}
 	public String getFirst_name() {
@@ -31,10 +31,10 @@ public class EmpVo {
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
-	public long getSalary() {
+	public double getSalary() {
 		return salary;
 	}
-	public void setSalary(long salary) {
+	public void setSalary(double salary) {
 		this.salary = salary;
 	}
 	
