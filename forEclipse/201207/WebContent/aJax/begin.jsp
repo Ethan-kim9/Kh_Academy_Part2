@@ -30,16 +30,7 @@
 
 		<h3>간단한 테스트</h3>
 		<p>(서버의 결과를 표시해 주기 위해 전체 화면이 새로고침 되는지? 아니면 필요한 부분만 새로고침 되는지?)</p>
-		<%
-			String temp = request.getParameter("num");
-			String msg = "수를 입력해주세요.";
-		int num = 0;
-		if (temp != null && !temp.equals("")) {
-			num = Integer.parseInt(temp);
-			if (num % 2 == 0) msg = num + "는 짝수입니다.";
-			else msg = num + "는 홀수 입니다.";
-		}
-		%>
+
 		<form name='form' method='post'>
 			<label> 정수를 입력하세요</label> 
 			<input type='text' size='6' name='num' value='${param.num}'/> 
@@ -47,9 +38,30 @@
 			<input type='submit' value='Check' />
 		</form>
 		<div id='result'>
-			<%=msg %>
+
 		</div>
 	</div>
+<script>
+// AJAX를 이용해서 처리결과를 result 영역에 삽입해주는 코드
+	let form = document.form;
 
+	form.onsubmit = function(){
+		let parameter = "?num=" + form.num.value; 
+		let request = new XMLHttpRequest();
+
+		request.open('get', './aJax/CheckNum.jsp' + parameter); // 리퀘스트를 오픈한다. (요청 정보를 생성한다.)
+		request.onreadystatechange // 상태변화가 감지되었을 때 (서버에서 처리가 모두 끝났을 경우에) 사용되는 함수 
+		= function(){
+			//requeste.status = 200 은 정상요청이라는 뜻, request.readyState = 4 는 정상적인 응답이라는 뜻
+			if(request.status == 200 && request.readyState == 4){
+				let req = document.getElementById('result');
+				req.innerHTML = request.responseText;
+				}
+		}
+		request.send(); // 요청 정보를 서버에 전송하는 것
+
+		return false; //sub의 기능을 취소해줌
+	}
+</script>
 </body>
 </html>
