@@ -12,6 +12,8 @@
 <H3>AJAX</H3>
 <ol>
  	<li><a href = 'index.jsp?sub=./aJax/menu.jsp&inc=./aJax/begin.jsp'>Begin</a></li>
+ 	<li><a href = 'index.jsp?sub=./aJax/menu.jsp&inc=./aJax/Search.jsp'>Search</a></li>
+ 	
 </ol>
 </body>
 </html>

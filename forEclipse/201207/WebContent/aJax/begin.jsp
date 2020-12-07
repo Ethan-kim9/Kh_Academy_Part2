@@ -56,6 +56,8 @@
 			if(request.status == 200 && request.readyState == 4){
 				let req = document.getElementById('result');
 				req.innerHTML = request.responseText;
+
+				// 제이쿼리 $('#result').html(request.responseText);
 				}
 		}
 		request.send(); // 요청 정보를 서버에 전송하는 것
