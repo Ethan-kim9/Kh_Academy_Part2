@@ -40,33 +40,23 @@
 $('#btnFind').on('click', function(){
 	let param = $('#frm').serialize();
 	let req = new XMLHttpRequest();
-	req.open('get', './aJax/emp_search_xml.jsp?' + param);
+	req.open('get', './aJax/emp_search_json.jsp?' + param);
 	req.onreadystatechange=function(){
-		//console.log(req.status + "," + req.readyState);
-		if(req.status==200 && req.readyState==4){
-			let xml = req.responseXML;
-			let emps = xml.getElementsByTagName("emp");
-			let rst = "";
-
-			for(var i = 0; i<emps.length ; i++){
-				var emp = emps.item(i);
-				var id = emp.getElementsByTagName("id").item(0).firstChild.nodeValue;
-				var name = emp.getElementsByTagName("name").item(0).firstChild.nodeValue;
-				var email = emp.getElementsByTagName("email").item(0).firstChild.nodeValue;
-				var	phone = emp.getElementsByTagName("phone").item(0).firstChild.nodeValue;
-				var salary = emp.getElementsByTagName("salary").item(0).firstChild.nodeValue;
-
-				rst += "<div class='emp'>"
-					+ "<div>" + id 		+ "</div>"
-					+ "<div>" + name 	+ "</div>"
-					+ "<div>" + email 	+ "</div>"
-					+ "<div>" + phone 	+ "</div>"
-					+ "<div>" + salary 	+ "</div>"
+		if(req.status ==200 && req.readyState == 4){
+			let data = JSON.parse(req.responseText);
+			let doc = '';
+			for(let i = 0; i<data.length; i++){
+				doc += "<div class='emp'>"
+					+ "<div>" + data[i].id 		+ "</div>"
+					+ "<div>" + data[i].name 	+ "</div>"
+					+ "<div>" + data[i].email 	+ "</div>"
+					+ "<div>" + data[i].phone 	+ "</div>"
+					+ "<div>" + data[i].salary 	+ "</div>"
 					+ "</div>";
 				}
-			$('#items').html(rst);
-		}
-	}
+				$('#items').html(doc);
+				}
+			}
 	req.send();
 })
 </script>

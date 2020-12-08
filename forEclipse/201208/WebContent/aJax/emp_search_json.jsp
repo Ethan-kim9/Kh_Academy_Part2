@@ -13,11 +13,11 @@
 	
 	//[{'id' : '%d', 'name' : '%s' ,'email' : '%s' ,'phone' : '%s','salary' : '%f'}, {} ]
 	String fmt = "{"
-			   + " '아이디' 		: '%d' 		, "
-			   + " '성명' 		: '%s' 		, "
-			   + " '이메일' 		: '%s' 		, "
-			   + " '연락처' 		: '%s' 		, "
-			   + " '급여' 		: '%10.1f' 	, "
+			   + " 'id' 	: '%d' , "
+			   + " 'name' 	: '%s' , "
+			   + " 'email' 	: '%s' , "
+			   + " 'phone' 	: '%s' , "
+			   + " 'salary' : '%10.1f'"
 			   + "}";
 			   
 			   
@@ -29,6 +29,7 @@
 				vo.getPhone_number(),
 				vo.getSalary()
 				);
+		str = str.replaceAll("'", "\"");
 		sb.add(str);
 	}
 	out.print(Arrays.toString(sb.toArray()));
