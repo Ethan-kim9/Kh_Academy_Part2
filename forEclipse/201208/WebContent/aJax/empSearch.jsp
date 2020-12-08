@@ -17,7 +17,7 @@
 				+ "<div>성명		: %s		</div>" 
 				+ "<div>이메일 	: %s		</div>" 
 				+ "<div>연락처 	: %s		</div>"
-				+ "<div>급여 	: %10.1f	</div>" 
+				+ "<div>급여 	: %10.1f		</div>" 
 				+ "</div>";
 				
 	for(EmpVo vo : list){

@@ -21,4 +21,3 @@
 		<salary><%= vo.getSalary()%></salary>
 	</emp>
 <% }%>
-</emps>
