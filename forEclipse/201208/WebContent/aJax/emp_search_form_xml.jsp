@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>emp_search_form</title>
+<title>emp_search_form_xml</title>
 <style>
 #items>div{
 	display : inline-block;
@@ -40,11 +40,13 @@
 $('#btnFind').on('click', function(){
 	let param = $('#frm').serialize();
 	let req = new XMLHttpRequest();
-	req.open('get', './ajax/emp_search.jsp?' + param);
+	req.open('get', './aJax/emp_search_xml.jsp?' + param);
 	req.onreadystatechange=function(){
 		//console.log(req.status + "," + req.readyState);
 		if(req.status==200 && req.readyState==4){
-			$('#items').html(req.responseText);
+			let xml = req.responseXML;
+			let emps = xml.getElementsByTagName("emp");
+			$('#items').html(req.responseXML);
 		}
 	}
 	req.send();
