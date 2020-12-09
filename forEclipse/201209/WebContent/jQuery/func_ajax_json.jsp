@@ -8,10 +8,10 @@
 </head>
 <body>
 	<div id='func_ajax'>
-		<h2>ajax를 이용한 구구단</h2>
+		<h2>ajax를 이용한 구구단(JSON)</h2>
 		<form name="form" id="form" method="post">
 			<label> 단수를 입력해주세요 : </label> 
-			<input type="text" size="4" name="dan" value=" " /> 
+			<input type="text" size="4" name="dan" value="" /> 
 			<input type="button" value="구구단 실행" id='btnRun' />
 		</form>
 		<div class='result'></div>
@@ -24,12 +24,17 @@ $('#btnRun').on('click', function(){
 
 	$.ajax({
 		type : 'get',
-		url  : './jQuery/multiplefunction.jsp',
+		url  : './jQuery/multiplefunction_json.jsp',
 		data : param,
 	
 		dataType : 'html',
-		success   : function(receiveData, status){
-				$('.result').html(receiveData);
+		success   : function(json, status){
+			let temp = '';
+
+			for(let i = 0; i<json.length; i++){
+				temp += json[i] + "<br/>";
+				}
+			$('.result').html(temp);
 		},
 		error	  : function(xhr, status, error){
 			alert(status);

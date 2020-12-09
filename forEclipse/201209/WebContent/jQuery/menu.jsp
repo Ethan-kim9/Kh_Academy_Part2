@@ -23,7 +23,11 @@
 		<li><a href='index.jsp?inc=./jQuery/Sorterble.jsp'>SORTERBLE</a></li>	
 		<li><a href='index.jsp?inc=./jQuery/Sorterble.jsp'>Accordian</a></li>	
 		<li><a href='index.jsp?inc=./jQuery/Autocomplete.jsp'>AUTOCOMPLETE</a></li>
-		<li><a href='index.jsp?inc=./jQuery/menu_ui.jsp'>MENU</a></li>	
+		<li><a href='index.jsp?inc=./jQuery/menu_ui.jsp'>MENU</a></li>
+		<li><a href='index.jsp?inc=./jQuery/func_ajax.jsp'>aJax 구구단</a></li>	
+		<li><a href='index.jsp?inc=./jQuery/func_ajax_json.jsp'>aJax 구구단 Json</a></li>	
+		
+		
 			
 		
 	</ol>
