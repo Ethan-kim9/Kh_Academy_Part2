@@ -43,12 +43,10 @@
                 <label>이름 </label>
                 <input type="text" id="username" /><br />
                 <label>성별 </label>
-                <form class="gender">
                     <label>남 </label>
                     <input type="radio" />
                     <label>여 </label>
                     <input type="radio" />
-                </form>
                 <label>이메일</label>
                 <input type="email" id="username" /><br />
                 <button type="submit">회원가입</button>
