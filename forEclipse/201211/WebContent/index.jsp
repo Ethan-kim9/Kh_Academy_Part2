@@ -37,8 +37,8 @@
 			</article>
 			
 			<aside>
-				<!-- 가상의 이미지 영역을 설정해주겠다. -->
-				<img src='http://placehold.it/150X100'>
+				<!-- 로그인 관련 로직 -->
+				<jsp:include page = "./member/login.jsp" />
 				<div id='sub_menu'>
 					<jsp:include page="<%=sub%>" />
 				<!-- Sub 파라미터를 이용한 JSP 동적삽입 -->
