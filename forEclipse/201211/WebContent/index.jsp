@@ -28,19 +28,8 @@
 	%>
 
 	<div id='index'>
-		<header id='header'>
-			<nav id='navigation'>
-				<ul>
-					<li><a href='index.jsp'>HOME</a></li>
-					<li><a href='index.jsp?sub=./jQuery/menu.jsp'>JQUERY</a></li>
-					<li><a href='index.jsp?sub=./aJax/menu.jsp'>AJAX</a></li>
-					<li><a href='index.jsp?sub=./myBatis/menu.jsp'>MYBATIS</a></li>
-					<li>공</li>
-					<li>사</li>
-					<li>중</li>
-				</ul>
-			</nav>
-		</header>
+<%--header 영역 --%>
+<%@ include file= "header.jsp" %>
 		<section id='contents'>
 			<article class='content'>
 				<jsp:include page="<%=inc%>" />
@@ -58,7 +47,9 @@
 			</aside>
 			
 		</section>
-		<footer id='footer'> 융합 S/W 개발</footer>
+		<%--  footer영역 --%>
+		<%@ include file= "footer.jsp" %>
+		
 	</div>
 
 
