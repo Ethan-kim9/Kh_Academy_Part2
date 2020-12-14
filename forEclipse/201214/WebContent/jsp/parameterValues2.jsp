@@ -1,3 +1,7 @@
+<%@page import="java.util.Set"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.Enumeration"%>
 <%@page import="java.util.Arrays"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,11 +12,52 @@
 <title>ParameterValues</title>
 </head>
 <body>
-<div id = 'parameter'>
-	<div id= 'result'></div>
-	<h3> Parameter Values</h3>
+<%
+	request.setCharacterEncoding("UTF-8");
+	response.setContentType("text/html; charset = UTF-8");
 	
-	<form name = 'frm_param' method = 'POST' id = 'frm_param'> 
+	if(request.getMethod().equals("POST")){
+		
+		String memberId = request.getParameter("MemberId");
+		String gender  = request.getParameter("gender");
+		
+		String [] hobby = request.getParameterValues("hobby");
+		String [] subject = request.getParameterValues("subject");
+		String [] attFile = request.getParameterValues("attFile");
+	
+		
+		out.print("<li>아이디 : " + memberId);
+		out.print("<li>성별 : " + gender);
+		out.print("<li>취미 : " + Arrays.toString(hobby));
+		out.print("<li>파일 : " + Arrays.toString(attFile));
+		
+		
+		out.print("<h4>getParameterNames()</h4>");
+		
+		Enumeration<String> enumeration = request.getParameterNames();
+		while(enumeration.hasMoreElements()){
+			String str = enumeration.nextElement();
+			out.print("<li>" + str);
+		}
+		
+		out.print("<h4>getParameterMap()</h4>");
+		Map <String, String[]> map = null;
+		map = request.getParameterMap();
+		
+		Set<String> set = map.keySet();
+		Iterator<String> iterator = set.iterator();
+		
+		while(iterator.hasNext()){
+			String key = iterator.next();
+			String[] values = map.get(key);
+			out.print("<li>" + key + " : " + Arrays.toString(values));
+		}
+	}
+%>
+<div id = 'parameter'>
+	<h3> Parameter Values2</h3>
+	
+	<form name = 'frm_param' method = 'post'> 
 	<!-- 폼태그에 액션이 없을 경우, 페이지 스스로에게 정보가 전달됨 -->
 	
 	<input type="text" id ='MemberId' name = 'MemberId' value = '김 씨' />
@@ -42,17 +87,8 @@
 	<label>첨부파일</label>
 	<input type="file" name = 'attFile' multiple="multiple" />
 	<p/>
-	<input type="button" value = '등록' id ="buttonRun"/>
+	<input type="submit" value = '등록' />
 	</form>
 </div>
-
-<script>
-
-	$('#buttonRun').on('click', function(){
-		let param = $('#frm_param').serialize();
-		$('#result').load('./jsp/ParameterValuesCtrl.jsp', param);
-	});
-	
-</script>
 </body>
 </html>
