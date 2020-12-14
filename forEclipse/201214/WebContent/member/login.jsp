@@ -14,5 +14,12 @@
 		response.sendRedirect("../index.jsp");
 	}else{
 		//로그인 실패
-	}
+
 %>
+	<script>
+	alert('login fail');
+	location.href = '../index.jsp';
+	</script>
+	<% 
+	}	
+	%>
