@@ -1,8 +1,9 @@
 /**
- * 
+ * login / logout을 위한 스크립트
+ * 작성일 : 2020.12.11
  */
 
-let logInOut = function(){
+var logInOut = function(){
 /*	
 	$('#btnLogin').on('click', function(){
 		$('#frm_log').action = "./member/login.jsp";
@@ -15,12 +16,13 @@ let logInOut = function(){
 	
 */
 	// javascript version
-	let btnLogin = document.getElementById('btnLogin');
-	let btnLogout = document.getElementById('btnLogout');
+	
+	var btnLogin = document.getElementById('btnLogin');
+	var btnLogout = document.getElementById('btnLogout');
 	
 	if(btnLogin != null){
 		btnLogin.onclick = function(){
-			let frm = document.frm_log;
+			var frm = document.frm_log;
 			frm.action = './member/login.jsp';
 			frm.submit();
 		}
