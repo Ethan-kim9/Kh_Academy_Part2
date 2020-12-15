@@ -13,6 +13,10 @@
 <ol>
  	<li><a href = 'index.jsp?sub=./jsp/menu.jsp&inc=./jsp/builtInObject.jsp'>내장객체</a></li>
  	<li><a href = 'index.jsp?sub=./jsp/menu.jsp&inc=./jsp/parameterValues.jsp'>파라미터</a></li>
+ 	<li><a href = 'index.jsp?sub=./jsp/menu.jsp&inc=./jsp/scope.jsp'>Scope</a></li>
+ 	<li><a href = 'index.jsp?sub=./jsp/menu.jsp&inc=./jsp/el_test.jsp'>EL</a></li>
+ 	<li><a href = 'index.jsp?sub=./jsp/menu.jsp&inc=./jsp/jstl_test.jsp'>JSTL</a></li>
+ 	
  	
 </ol>
 </body>

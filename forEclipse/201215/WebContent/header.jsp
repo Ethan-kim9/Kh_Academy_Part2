@@ -8,7 +8,7 @@
 					<li><a href='index.jsp?sub=./aJax/menu.jsp'>AJAX</a></li>
 					<li><a href='index.jsp?sub=./myBatis/menu.jsp'>MYBATIS</a></li>
 					<li><a href='index.jsp?sub=./jsp/menu.jsp'>JSP</a></li>
-					<li>공사</li>
+					<li><a href='index.jsp?sub=./guestbook/menu.jsp&inc=./guestbook/select.jsp'>방명록</a></li>
 					<li>중</li>
 				</ul>
 			</nav>
