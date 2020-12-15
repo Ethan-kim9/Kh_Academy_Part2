@@ -191,7 +191,11 @@
 			request.setAttribute("list", list);
 			%>
 			
-		<c:forEach var='memberVo'></c:forEach>
+		<c:forEach var='memberVo' items ='${list}'>
+			<ol>
+				<li>${memberVo.memberId} : ${memberVo.phone } </li>
+			</ol>
+		</c:forEach>
 	</div>
 </body>
 </html>

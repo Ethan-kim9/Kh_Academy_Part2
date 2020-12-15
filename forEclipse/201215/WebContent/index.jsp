@@ -11,6 +11,7 @@
 <title>index with Library</title>
 </head>
 <body>
+<% request.setCharacterEncoding("utf-8"); %>
 	<%
 		String inc = "intro.jsp";
 	if (request.getParameter("inc") != null) {
@@ -29,10 +30,11 @@
 
 	<div id='index'>
 <%--header 영역 --%>
+
 <%@ include file= "header.jsp" %>
 		<section id='contents'>
 			<article class='content'>
-				<jsp:include page="<%=inc%>" />
+				<jsp:include page="<%= inc%>" />
 				<!-- inc 파라미터를 이용한 JSP 동적삽입 -->
 			</article>
 			
