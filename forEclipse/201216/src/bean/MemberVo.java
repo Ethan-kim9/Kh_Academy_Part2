@@ -1,6 +1,7 @@
 package bean;
 
 public class MemberVo {
+	
 	String memberId;
 	String passWord;
 	String name;
@@ -8,6 +9,7 @@ public class MemberVo {
 	String phone;
 	String zipcode;
 	String address;
+	
 	public String getMemberId() {
 		return memberId;
 	}

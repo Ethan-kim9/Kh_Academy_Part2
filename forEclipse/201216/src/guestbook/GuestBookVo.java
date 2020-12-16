@@ -6,6 +6,7 @@ public class GuestBookVo {
 		String	memberId; 
 		String	passWord;
 		String	memberDate;
+		String	document;
 		
 		public int getSerial() {
 			return serial;
@@ -37,5 +38,4 @@ public class GuestBookVo {
 		public void setDocument(String document) {
 			this.document = document;
 		}
-		String	document;
 }

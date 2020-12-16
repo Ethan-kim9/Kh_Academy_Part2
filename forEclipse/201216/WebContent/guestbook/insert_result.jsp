@@ -12,6 +12,7 @@
 
 	String msg = dao.insert(vo);
 	request.setAttribute("msg", msg);
+	
 %>
 
 <script>
