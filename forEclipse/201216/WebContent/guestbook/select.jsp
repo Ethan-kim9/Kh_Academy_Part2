@@ -77,4 +77,5 @@
 	</div>
 		
 </body>
+<script>guestbook()</script>
 </html>

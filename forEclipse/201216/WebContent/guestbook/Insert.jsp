@@ -2,9 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-   <form name = 'frm_gb_insert' method = 'post'>
+   <form name = 'frm_gb_insert' method = 'post' id='frm_gb_insert'>
    	<label> 작성자</label>
-   	<input type='text' disabled class = 'mid' value='${sessionScope.mid }' />
+   	<input type='text' class = 'mid' value='${sessionScope.mid }' />
    	<label> 작성일</label>
    	<output class = 'mdate'><%=new Date().toLocaleString() %></output>
    	<br/>
