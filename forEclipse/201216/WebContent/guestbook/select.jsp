@@ -35,6 +35,26 @@
 		request.setAttribute("list", list);
 	%>
 	
+	<%-- 방명록 입력 화면 --%>
+	<c:if test='${not empty sessionScope.mid}'>
+	<%@include file="./Insert.jsp" %>
+	</c:if>
+	
+	<c:if test='${empty sessionScope.mid}'>
+		<font color="teal"> 로그인 후 방명록을 작성해주세요.</font>
+	</c:if>
+	
+	<%--
+	
+	<c:choose>
+	<c:when test="${not empty sessionScope.memberId}">
+	</c:when>
+	<c:otherwise>
+		<font color="teal"> 로그인 후 방명록을 작성해주세요.</font>
+	</c:otherwise>
+	</c:choose>
+	
+	 --%>
 	
 	<%-- 방명록 --%>
 	<div id = 'list'>
