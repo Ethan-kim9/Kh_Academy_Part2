@@ -4,13 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>scope_check_relay</title>
 </head>
 <body>
 <%
-	request.setAttribute("msg", "relay를 적용한 msg 입니다.");
-	RequestDispatcher requestDispatcher = request.getRequestDispatcher("scope_check.jsp");
-	requestDispatcher.forward(request, response);
+	request.setAttribute("msg", "오늘 회식 취소됨...");
+	RequestDispatcher dis = request.getRequestDispatcher("scope_check.jsp");
+	dis.forward(request, response);	
+
+
 %>
 </body>
 </html>

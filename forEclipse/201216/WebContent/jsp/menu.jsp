@@ -5,19 +5,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
 </head>
 <body>
-<H3>JSP</H3>
+<h3>JSP</h3>
 <ol>
- 	<li><a href = 'index.jsp?sub=./jsp/menu.jsp&inc=./jsp/builtInObject.jsp'>내장객체</a></li>
- 	<li><a href = 'index.jsp?sub=./jsp/menu.jsp&inc=./jsp/parameterValues.jsp'>파라미터</a></li>
- 	<li><a href = 'index.jsp?sub=./jsp/menu.jsp&inc=./jsp/scope.jsp'>Scope</a></li>
- 	<li><a href = 'index.jsp?sub=./jsp/menu.jsp&inc=./jsp/el_test.jsp'>EL</a></li>
- 	<li><a href = 'index.jsp?sub=./jsp/menu.jsp&inc=./jsp/jstl_test.jsp'>JSTL</a></li>
- 	
- 	
+	<li><a href='index.jsp?sub=./jsp/menu.jsp&inc=./jsp/implict.jsp'>내장객체</a></li>
+	<li><a href='index.jsp?sub=./jsp/menu.jsp&inc=./jsp/parameterValues.jsp'>parameter</a></li>
+	<li><a href='index.jsp?sub=./jsp/menu.jsp&inc=./jsp/scope.jsp'>Scope</a></li>
+	<li><a href='index.jsp?sub=./jsp/menu.jsp&inc=./jsp/el_test.jsp'>EL</a></li>
+	<li><a href='index.jsp?sub=./jsp/menu.jsp&inc=./jsp/jstl_test.jsp'>JSTL</a></li>
 </ol>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

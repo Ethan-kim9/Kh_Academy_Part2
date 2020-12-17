@@ -4,28 +4,27 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
 public class AutoComplete {
 	Connection conn;
-	PreparedStatement preparedStatement;
-	ResultSet resultSet;
+	PreparedStatement ps;
+	ResultSet rs;
+	
 	public AutoComplete() {
 		conn = new Application().getConn();
 	}
-	
-	@SuppressWarnings("finally")
+	//['java', 'jara', 'jagopa', 'jsp', 'javascript', 'like', 'love', 'life'] ==> ''(X), ""(0)
 	public String getData() {
 		StringBuffer sb = new StringBuffer();
-		
+				
 		try {
-			String sql = "Select first_name from hr.employees";
-			preparedStatement = conn.prepareStatement(sql);
-			resultSet = preparedStatement.executeQuery(); // CRUD
+			String sql = "select first_name from hr.employees";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery(); // CRUD(insert, select, update, delete)
 			sb.append("[");
-			resultSet.next();
-			sb.append("'" + resultSet.getString("first_name")+ "'");
-			while(resultSet.next()) {
-				sb.append(",'" + resultSet.getString("first_name") + "'");
+			rs.next();
+			sb.append("'" + rs.getString("first_name") + "'");
+			while(rs.next()) {
+				sb.append(", '" + rs.getString("first_name") + "'");
 			}
 			sb.append("]");
 		}catch(Exception ex) {
@@ -37,3 +36,12 @@ public class AutoComplete {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+

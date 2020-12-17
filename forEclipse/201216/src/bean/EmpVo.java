@@ -1,13 +1,13 @@
 package bean;
 
 public class EmpVo {
-	int employee_id;
+	int    employee_id;
 	String first_name;
 	String email;
 	String phone_number;
 	double salary;
 	
-	public int getEmployee_id(){
+	public int getEmployee_id() {
 		return employee_id;
 	}
 	public void setEmployee_id(int employee_id) {
@@ -37,5 +37,4 @@ public class EmpVo {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	
 }

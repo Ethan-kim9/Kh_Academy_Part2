@@ -5,18 +5,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
 </head>
 <body>
-<H3>AJAX</H3>
+<h3>AJAX</h3>
 <ol>
- 	<li><a href = 'index.jsp?sub=./aJax/menu.jsp&inc=./aJax/begin.jsp'>Begin</a></li>
- 	<li><a href = 'index.jsp?sub=./aJax/menu.jsp&inc=./aJax/Search.jsp'>Search</a></li>
- 	<li><a href = 'index.jsp?sub=./aJax/menu.jsp&inc=./aJax/emp_search_form_xml.jsp'>Search_xml</a></li>
- 	 	<li><a href = 'index.jsp?sub=./aJax/menu.jsp&inc=./aJax/emp_search_form_json.jsp'>Search_Json</a></li>
- 	
- 	
+	<li><a href='index.jsp?sub=./ajax/menu.jsp&inc=./ajax/begin.jsp'>Begin</a></li>
+	<li><a href='index.jsp?sub=./ajax/menu.jsp&inc=./ajax/emp_search_form.jsp'>사원조회</a></li>
+	<li><a href='index.jsp?sub=./ajax/menu.jsp&inc=./ajax/emp_search_form_xml.jsp'>사원조회(XML)</a></li>
+	<li><a href='index.jsp?sub=./ajax/menu.jsp&inc=./ajax/emp_search_form_json.jsp'>사원조회(JSON)</a></li>
 </ol>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

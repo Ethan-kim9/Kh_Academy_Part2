@@ -1,26 +1,25 @@
 package bean;
 
 public class MemberVo {
-	
-	String memberId;
-	String passWord;
+	String mid;
+	String pwd;
 	String name;
 	String email;
 	String phone;
 	String zipcode;
 	String address;
 	
-	public String getMemberId() {
-		return memberId;
+	public String getMid() {
+		return mid;
 	}
-	public void setMemberId(String memberId) {
-		this.memberId = memberId;
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
-	public String getPassWord() {
-		return passWord;
+	public String getPwd() {
+		return pwd;
 	}
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	public String getName() {
 		return name;
@@ -52,4 +51,5 @@ public class MemberVo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
 }

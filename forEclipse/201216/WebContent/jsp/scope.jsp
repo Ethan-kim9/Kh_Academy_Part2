@@ -4,27 +4,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SCOPE</title>
+<title>scope</title>
 </head>
 <body>
-<div id ="scope">
-<h3> Application | Session | Request | PageContext</h3>
-</div>
+<div id='scope'>
+	<h3>application | session | request | pageContext</h3>
 	<%
-		String msg = "Scope 테스트용 메세지입니다.";
-
+		String msg = "오늘 전체 회식입니다~ 메뉴는 소등갈비...";
 		application.setAttribute("msg", msg);
 		session.setAttribute("msg", msg);
 		request.setAttribute("msg", msg);
 		pageContext.setAttribute("msg", msg);
 		
-		//session 영역의 유지시간 설정 (5초)
-		//session.setMaxInactiveInterval(5);
-		// 개인별로 정보를 보존하기에 session 영역을 보통 login/logout을 구현할 때 많이쓴다.
-		
-		//request의 경우는 <form>영역을 받을 때 많이 쓴다.
+		//session영역의 유지 시간 설정(5초)
+		session.setMaxInactiveInterval(5);
 	%>
 	
-	<a href = "scope_check.jsp">Scope Message Check</a>
+	<a href='scope_check.jsp'>scope message check</a>
+	<form method='post' action='scope_check_relay.jsp'>
+		<input type='submit'/>
+	
+	</form>
+	
+
+</div>
 </body>
 </html>

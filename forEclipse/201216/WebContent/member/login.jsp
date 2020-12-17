@@ -11,12 +11,13 @@
 
     
 <%
-	vo.setMemberId(request.getParameter("mid"));
-	vo.setPassWord(request.getParameter("pwd"));
-	
+	//vo.setMid(request.getParameter("mid"));
+	//vo.setPwd(request.getParameter("pwd"));
+
 	//response.setContentType("text/html;charset=utf-8");
 	//String mid = request.getParameter("mid");
 	//String pwd = request.getParameter("pwd");
+
 	
 	
 	
@@ -29,11 +30,10 @@
 	
 	//MemberDao dao = new MemberDao();
 	//boolean b = dao.login(mid, pwd);
-	
-	boolean b = dao.login(vo.getMemberId(), vo.getPassWord() );
+	boolean b = dao.login(vo.getMid(), vo.getPwd() );
 	
 	if(b){
-		session.setAttribute("mid", vo.getMemberId());
+		session.setAttribute("mid", vo.getMid());
 		response.sendRedirect("../index.jsp");
 	}else{
 		//로그인 실패

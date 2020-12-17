@@ -14,25 +14,25 @@
 		//session.removeAttribute("mid");
 		if( session.getAttribute("mid") == null){
 	%>
-	<%--로그인 이전 화면 --%>
-	<form name='frm_log' method='post' id='frm_log'>
-		<label for='mid'>아이디</label><br/>
-		<input type='text' id='mid' name='mid' size='10' value='lee' />
-		<br/>
-		<label for='pwd'>암호</label><br/>
-		<input type='password' id='pwd' name='pwd' size='10' value='1111'/>
-		<br/>
-		<input type='button' id='btnLogin' value='로그인' />
-	</form>
-
-	<br/>
-	<a href=''>아이디 | 암호 찾기</a>
+			<%--로그인 이전 화면 --%>
+			<form name='frm_log' method='post' id='frm_log'>
+				<label for='mid'>아이디</label><br/>
+				<input type='text' id='mid' name='mid' size='14' value='kim' />
+				<br/>
+				<label for='pwd'>암호</label><br/>
+				<input type='password' id='pwd' name='pwd' size='14' value='1111'/>
+				<br/>
+				<input type='button' id='btnLogin' value='로그인' />
+			</form>
+		
+			<br/>
+			<a href=''>아이디 | 암호 찾기</a>
 
 	<% } else { %>
 	
-	<%--로그인 이후 화면 --%>
-	<span>[<%=session.getAttribute("mid") %>] 님 방가</span><br/>
-	<input type='button' id='btnLogout' value='로그아웃' />
+			<%--로그인 이후 화면 --%>
+			<span>[<%=session.getAttribute("mid") %>] 님 방가</span><br/>
+			<input type='button' id='btnLogout' value='로그아웃' />
 	
 	<% }  %>
 	

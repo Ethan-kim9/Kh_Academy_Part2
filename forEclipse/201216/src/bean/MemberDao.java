@@ -5,19 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class MemberDao {
-	Connection conn;  		//DB에 연결정보를 저장하는 클래스
-	PreparedStatement ps; 	// SQL 문장
-	ResultSet rs;
+	Connection conn; //database의 연결 정보
+	PreparedStatement ps; // 문자열로 되어 있는 sql문장을 sql 실행문장
+	ResultSet rs; // select문의 실행결과
 	
 	public MemberDao() {
 		conn = new Application().getConn();
 	}
 	
-	@SuppressWarnings("finally")
 	public boolean login(String mid, String pwd) {
 		boolean b = false;
 		try {
-			String sql = "select count(MemberID) cnt from members where MemberID=? and Password=? ";
+			String sql = "select count(mid) cnt from members where mid=? and pwd=? ";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,  mid);
 			ps.setString(2,  pwd);
@@ -25,8 +24,8 @@ public class MemberDao {
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				int cnt = rs.getInt("cnt");
-				if(cnt >= 1) {
-					b = true;
+				if(cnt >=1) {
+					b=true;
 				}
 			}
 		}catch(Exception ex) {

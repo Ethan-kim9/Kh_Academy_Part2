@@ -1,6 +1,5 @@
 package bean;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,51 +8,59 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmpDao {
-	Connection connection;
-	PreparedStatement preparedStatement;
-	ResultSet resultSet;
+	Connection conn;
+	PreparedStatement ps;
+	ResultSet rs;
 	
 	public EmpDao() {
-		connection = new Application().getConn();
+		conn = new Application().getConn();
 	}
 	
-	@SuppressWarnings("finally")
-	public List<EmpVo> search(String findString){
-		List<EmpVo> list = new ArrayList<>();
-		
+	public List<EmpVo> search(String findStr){
+		List<EmpVo> list = new ArrayList<EmpVo>();
+
 		try {
-			String sql  = "SELECT * FROM hr.employees "
-						+ "WHERE first_name LIKE ? "
-						+ "OR email LIKE ? "
-						+ "OR Phone_number LIKE ? ";
+			String sql = " select * from hr.employees "
+					   + " where  first_name like ? "
+					   + " or     email like ? "
+					   + " or     phone_number like ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + findStr + "%");
+			ps.setString(2, "%" + findStr + "%");
+			ps.setString(3, "%" + findStr + "%");
 			
-			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1,"%" + findString + "%");
-			preparedStatement.setString(2,"%" + findString + "%");
-			preparedStatement.setString(3,"%" + findString + "%");
-			
-			resultSet = preparedStatement.executeQuery();
-			
-			while(resultSet.next()) {
-				
+			rs = ps.executeQuery();
+			while(rs.next()) {
 				EmpVo vo = new EmpVo();
-				vo.setEmployee_id(resultSet.getInt("employee_id"));
-				vo.setFirst_name(resultSet.getString("first_name"));
-				vo.setEmail(resultSet.getString("email"));
-				vo.setPhone_number(resultSet.getString("phone_number"));
-				vo.setSalary(resultSet.getDouble("salary"));
+				vo.setEmployee_id(rs.getInt("employee_id"));
+				vo.setFirst_name(rs.getString("first_name"));
+				vo.setEmail(rs.getString("email"));
+				vo.setPhone_number(rs.getString("phone_number"));
+				vo.setSalary(rs.getDouble("salary"));
 				
 				list.add(vo);
 			}
-		}catch (Exception e) {
-			e.printStackTrace();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
 		}finally {
-			try { 
-				connection.close();			
-			}catch (SQLException e) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			return list;
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
