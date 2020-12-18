@@ -27,9 +27,6 @@
 
 %>
 <div id='index'>
-	<div id='g_msg'>
-		<%=application.getAttribute("msg") %>
-	</div>
 
 	<%-- header 영역 --%>	
 	<%@include file="header.jsp" %>

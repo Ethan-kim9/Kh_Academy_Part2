@@ -21,7 +21,7 @@ public class FirstServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("doGet()에 의해서 실행된 코드입니다.");
+		System.out.println("doPost()에 의해서 실행된 코드입니다.");
 		/* <form method = 'post' /> */
 		System.out.println(req.getParameter("name"));
 		System.out.println(req.getParameter("address"));
