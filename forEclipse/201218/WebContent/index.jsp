@@ -19,7 +19,7 @@
  }
  
  // sub
- String sub="./jQuery/menu.jsp";
+ String sub="./jquery/menu.jsp";
  if(request.getParameter("sub") != null){
 	 sub = request.getParameter("sub");
  }

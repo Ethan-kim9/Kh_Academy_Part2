@@ -4,9 +4,9 @@
 	<nav id='nav'>
 		<ul>
 			<li><a href='index.jsp'>HOME</a></li>
-			<li><a href='index.jsp?sub=./jQuery/menu.jsp'>JQUERY</a></li>
-			<li><a href='index.jsp?sub=./aJax/menu.jsp'>AJAX</a></li>
-			<li><a href='index.jsp?sub=./myBatis/menu.jsp'>MYBATIS</a></li>
+			<li><a href='index.jsp?sub=./jquery/menu.jsp'>JQUERY</a></li>
+			<li><a href='index.jsp?sub=./ajax/menu.jsp'>AJAX</a></li>
+			<li><a href='index.jsp?sub=./mybatis/menu.jsp'>MYBATIS</a></li>
 			<li><a href='index.jsp?sub=./jsp/menu.jsp'>JSP</a></li>
 			<li><a href='index.jsp?inc=./guestbook/select.jsp'>방명록</a></li>
 			<li>게시판</li>

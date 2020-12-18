@@ -16,8 +16,8 @@
 %>
 <h1 id='header'>jQuery Test를 위한 태그(II)</h1>
 <ul>
-	<li><a href='index.jsp?inc=./jQuery/filter.jsp'>FILTER</a></li>
-	<li><a href='index.jsp?inc=./jQuery/traverse.jsp'>TRAVERSE</a></li>
+	<li><a href='index.jsp?inc=./jquery/filter.jsp'>FILTER</a></li>
+	<li><a href='index.jsp?inc=./jquery/traverse.jsp'>TRAVERSE</a></li>
 </ul>
 
 

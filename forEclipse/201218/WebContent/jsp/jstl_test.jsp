@@ -25,19 +25,22 @@
 	%>
 	
 	<h3>c:out ==>jstl을 사용한 출력문</h3>
+	<ul>
 	<li>Name : <c:out value='${pageScope.page_name }' default='이름을 입력하세요' /></li>
 	<li>Score : <c:out value='${pageScope.page_score }' default='빵점' /> </li>	
 	<li>Name(req) : <c:out value='${requestScope.req_name }' /></li>
 	<li>Score(req) : <c:out value='${requestScope.req_score }' /></li>
 	<li>Name : <c:out value='${page_name }' /></li>
 	<li>Score : <c:out value='${page_score }' /></li>
+	</ul>
 	
 	<h3>c:set | c:remove | c:out</h3>
-	
+	<ul>
 	<c:set var='score' value='100' />
 	<li>Score 1 : <c:out value='${score }' /> </li>
 	<c:remove var='score' />
 	<li>Score 2 : <c:out value='${score }' default='변수가 삭제됨.'/> </li>
+	</ul>
 	
 	<h3>c:if</h3>
 	<c:if test='${req_score>=90 }'>
@@ -181,13 +184,7 @@
 			<li>${vo.mid } : ${vo.phone } </li>
 		</c:forEach>	
 	
-	</fieldset>
-	
-	
-	
-	
-	
-	
+	</fieldset>	
 </div>
 </body>
 </html>
