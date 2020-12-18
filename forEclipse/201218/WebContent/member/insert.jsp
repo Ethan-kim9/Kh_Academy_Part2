@@ -30,7 +30,6 @@
 			<input type='text' name='address' size='60'/> <br/>
 			<label>사진</label>
 			<input type='file' name='photo' />
-			<label></label>
 			<img src='http://placehold.it/200x140'> <br/>
 			<hr/>
 			
