@@ -3,16 +3,19 @@ package bean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MemberDao {
-	Connection conn; //database의 연결 정보
-	PreparedStatement ps; // 문자열로 되어 있는 sql문장을 sql 실행문장
-	ResultSet rs; // select문의 실행결과
+	Connection conn;
+	PreparedStatement ps; 
+	ResultSet rs; 
 	
 	public MemberDao() {
 		conn = new Application().getConn();
 	}
 	
+	@SuppressWarnings("finally")
 	public boolean login(String mid, String pwd) {
 		boolean b = false;
 		try {
@@ -32,6 +35,18 @@ public class MemberDao {
 			ex.printStackTrace();
 		}finally {
 			return b;
+		}
+	}
+	
+	@SuppressWarnings("finally")
+	public List<MemberVo> select(){
+		List<MemberVo> list = new ArrayList<MemberVo>();
+		try {
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			return list;
 		}
 	}
 

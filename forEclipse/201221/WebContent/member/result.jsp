@@ -4,16 +4,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>작업결과(result)</title>
+<title>작업 결과(result)</title>
+<link rel='stylesheet' type='text/css' href='./css/member.css'>
+<script src='./js/member.js'></script>
 </head>
 <body>
-	<div id='memner'>
-		<div class='result_msg'>
-			작업이 처리되었습니다.
-		</div>
-		
-		<input type='button' value='목록으로' id='btnList'/>
-		
+<div id='member'>
+	<div class='result_msg'>
+		작업이 처리 되었습니다.
 	</div>
+	<form name='frm_member' method='post'>
+		<input type='text' name='findStr' value='${param.findStr }'/>
+		<input type='text' name='nowPage' value='${param.nowPage }'/>
+	
+		<div class='btns'>
+			<input type='button' value='목록으로' id='btnSelect' />
+		</div>		
+	</form>
+</div>
+<script>member()</script>
 </body>
 </html>

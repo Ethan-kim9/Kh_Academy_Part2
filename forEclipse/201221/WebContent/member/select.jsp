@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,8 +16,11 @@
 		<form name="frm_member" method="post" id='frm_member'>
 			<input type="button" value="입력" id="btnInsert" />
 			<div>
-				<input type="text" name="findStr" class="findStr" /> 
+				<input type="text" name="findStr" class="findStr" value = '${param.findStr }'/> 
 				<input type="button" value="검색" id="btnFind" />
+				<input type="text" name="nowPage" value = '${param.nowPage }'/>
+				<input type="text" name="mid"/>
+				
 			</div>
 		</form>
 		<div class='title'>
@@ -25,42 +31,30 @@
 				<span class='mdate'>가입일</span>
 		</div>
 		<div class='items'>
-			<div class='item'>
-				<span class='no'> 1</span> 
+		<c:forEach var ='vo' begin='1' end ='10'>
+			<div class='item' onclick='view()'>
+				<span class='no'>${vo }</span> 
 				<span class='mid'> hong</span> 
 				<span class='name'>Gildong</span> 
 				<span class='email'>hong@jobt.kr</span>
 				<span class='mdate'>2020-01-01</span>
 			</div>
-			<div class='item'>
-				<span class='no'> 2</span>
-				<span class='mid'> kim</span> 
-				<span class='name'>Gildong</span> 
-				<span class='email'>kim@jobt.kr</span>
-				<span class='mdate'>2020-02-01</span>
-			</div>
-			<div class='item'>
-				<span class='no'> 3</span> 
-				<span class='mid'> lee</span> 
-				<span class='name'>Gildong</span> 
-				<span class='email'>lee@jobt.kr</span>
-				<span class='mdate'>2020-03-01</span> 
-			</div>
+		</c:forEach>
 		</div>
 		
 		<div class ='paging'>
 			<input type="button" value ="처음" id="btnFirst"/>
 			<input type="button" value ="이전" id="btnPrev"/>
 			
-			<input type="button" value ="1" id="btn1"/>
-			<input type="button" value ="2" id="btn2"/>
-			<input type="button" value ="3" id="btn3"/>
-			<input type="button" value ="4" id="btn4"/>
-			<input type="button" value ="5" id="btn5"/>
+			<c:forEach var="i" begin='1' end ='20'>
+			<input type="button" value ='${i }' class= "${(param.nowPage==i)? 'disabled' : '' }"  onclick='goPage(${i})'/>
+			</c:forEach>
 			
-			<input type="button" value ="다음" id="btnNext"/>
-			<input type="button" value ="끝" id="btnLast"/>
+			<input type="button" value ="다음" id="btnNext" onclick='goPage()'/>
+			<input type="button" value ="끝" id="btnLast"  onclick='goPage()'/>
 		</div>
 		</div>
 </body>
+<script src='./js/member.js'></script>
+<script type="text/javascript">member();</script>
 </html>
