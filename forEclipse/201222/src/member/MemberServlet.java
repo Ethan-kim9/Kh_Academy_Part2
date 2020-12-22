@@ -86,7 +86,14 @@ public class MemberServlet extends HttpServlet{
 			
 			msg = dao.delete(vo);
 			
+			page = new Page();
+			
+			page.setFindStr(req.getParameter("findStr"));
+			page.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
+			
+			req.setAttribute("page", page);
 			req.setAttribute("msg", msg);
+			
 			rd = req.getRequestDispatcher(url + "result.jsp");
 			rd.forward(req, resp);
 			break;

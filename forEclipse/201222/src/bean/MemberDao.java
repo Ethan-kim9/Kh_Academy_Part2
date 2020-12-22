@@ -198,8 +198,16 @@ public class MemberDao {
 			}
 		} catch (Exception e) {
 			msg = e.getMessage();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			};
+			return msg;
 		}
-		return msg;
 	}
 
 }
+
