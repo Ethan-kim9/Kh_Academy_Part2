@@ -11,6 +11,19 @@ var member = function(){
 	var btnPhoto  = getID('btnPhoto');
 	var btnModify = getID('btnModify');
 	var btnUpdate = getID('btnUpdate');
+	var btnDelete = getID('btnDelete');
+	
+	if(btnDelete != null){
+		btnDelete.onclick = function(){
+			var frm = document.frm_member;
+			var pwd = prompt("회원정보를 삭제하시려면 암호를 입력하세요");
+			if(pwd != null){
+				frm.action = url + 'result.jsp';
+				frm.submit();
+			}
+		}
+	}
+	
 	
 	if(btnUpdate != null){
 		btnUpdate.onclick = function(){
@@ -78,7 +91,7 @@ var member = function(){
 	if(btnSelect != null){
 		btnSelect.onclick = function(){
 			var frm = document.frm_member;
-			frm.action = url + 'select.jsp';
+			frm.action = url + 'select.jsp';// frm.action='member.do?inc=select'
 			frm.submit();
 		}
 	}
@@ -116,4 +129,3 @@ function view(mid){
 	frm.mid.value = mid;
 	frm.submit();
 }
-

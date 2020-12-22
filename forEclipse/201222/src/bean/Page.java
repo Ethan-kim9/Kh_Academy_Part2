@@ -1,11 +1,11 @@
 package bean;
 
 public class Page {
-	int totListSize; //total List size
-	int totPage;	//total Pages
+	int totListSize;
+	int totPage;
 	int startPage;
 	int endPage;
-	int StartNo;
+	int startNo;
 	int endNo;
 	int nowPage;
 	int listSize=3;
@@ -13,24 +13,22 @@ public class Page {
 	
 	String findStr;
 	
-	
-	
-	public Page() {	}
-
-	public Page(int tot, int now){
-	this.totListSize = tot;
-	this.nowPage =now;
-	pageCompute();
+	public Page() {}
+	public Page(int tot, int now) {
+		this.totListSize = tot;
+		this.nowPage = now;
+		pageCompute();
 	}
-
 	
 	public void pageCompute() {
-		totPage = (int)Math.ceil(totListSize/(double)listSize);
+		totPage = (int)(Math.ceil(totListSize/(double)listSize));
 		endNo = nowPage * listSize;
-		StartNo = endNo - listSize + 1;
+		startNo = endNo -listSize + 1;
+		if(endNo>totListSize) endNo = totListSize;
 		
-		endPage = (int)(Math.ceil(nowPage/(double)blockSize))*2;
-		startPage = endPage - blockSize +1;
+		endPage = (int)(Math.ceil(nowPage/(double)blockSize))*blockSize;
+		startPage = endPage-blockSize+1;
+		if(endPage>totPage) endPage = totPage;
 	}
 
 	public int getTotListSize() {
@@ -41,12 +39,12 @@ public class Page {
 		this.totListSize = totListSize;
 	}
 
-	public int getTotpage() {
+	public int getTotPage() {
 		return totPage;
 	}
 
-	public void setTotpage(int totpage) {
-		this.totPage = totpage;
+	public void setTotPage(int totPage) {
+		this.totPage = totPage;
 	}
 
 	public int getStartPage() {
@@ -66,11 +64,11 @@ public class Page {
 	}
 
 	public int getStartNo() {
-		return StartNo;
+		return startNo;
 	}
 
 	public void setStartNo(int startNo) {
-		StartNo = startNo;
+		this.startNo = startNo;
 	}
 
 	public int getEndNo() {
@@ -97,12 +95,12 @@ public class Page {
 		this.listSize = listSize;
 	}
 
-	public int getBlickSize() {
+	public int getBlockSize() {
 		return blockSize;
 	}
 
-	public void setBlickSize(int blickSize) {
-		this.blockSize = blickSize;
+	public void setBlockSize(int blockSize) {
+		this.blockSize = blockSize;
 	}
 
 	public String getFindStr() {
@@ -112,6 +110,6 @@ public class Page {
 	public void setFindStr(String findStr) {
 		this.findStr = findStr;
 	}
-
+	
 	
 }

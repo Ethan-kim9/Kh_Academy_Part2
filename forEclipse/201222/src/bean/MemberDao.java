@@ -7,15 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MemberDao {
-	Connection conn;
-	PreparedStatement ps; 
-	ResultSet rs; 
+	Connection conn; //database의 연결 정보
+	PreparedStatement ps; // 문자열로 되어 있는 sql문장을 sql 실행문장
+	ResultSet rs; // select문의 실행결과
 	
 	public MemberDao() {
 		conn = new Application().getConn();
 	}
 	
-	@SuppressWarnings("finally")
 	public boolean login(String mid, String pwd) {
 		boolean b = false;
 		try {
@@ -37,36 +36,48 @@ public class MemberDao {
 			return b;
 		}
 	}
-
 	
 	public int getTotListSize(String findStr) throws Exception{
 		int totListSize = 0;
-		String sql = "select count(mid) cnt from members where mid like ? or email like ? or phone like ? or address like ?";
-		ps=conn.prepareStatement(sql);
-		
-		ps.setString(1, "%" + findStr + "%");
-		ps.setString(2, "%" + findStr + "%");
-		ps.setString(3, "%" + findStr + "%");
-		ps.setString(4, "%" + findStr + "%");
+		String sql = "select count(mid) cnt from members where mid like ? or email like ? or phone like ? or address like ? ";
+		ps = conn.prepareStatement(sql);
+		ps.setString(1,  "%" + findStr + "%");
+		ps.setString(2,  "%" + findStr + "%");
+		ps.setString(3,  "%" + findStr + "%");
+		ps.setString(4,  "%" + findStr + "%");
 		
 		rs = ps.executeQuery();
-		
 		if(rs.next()) {
-			totListSize =rs.getInt("cnt");
+			totListSize = rs.getInt("cnt");
 		}
 		return totListSize;
+		
 	}
 	
-	@SuppressWarnings("finally")
+	
+	
 	public List<MemberVo> select(Page page){
-		List<MemberVo> list = new ArrayList<>();
+		List<MemberVo> list = new ArrayList<MemberVo>();
 		try {
+			//넘겨받은 검색어를 사용하여 totListSize값을 구해야함.
 			String f = page.getFindStr();
 			page.setTotListSize(getTotListSize(f));
 			page.pageCompute();
 			
-			String sql = "sql * from members ";
-			ps=conn.prepareStatement(sql);
+			String sql = " select * from ("
+			           + "   select rownum no, m.* from ("
+			           + "     select * from members "
+					   + "     where mid like ? or email like ? or phone like ? or address like ? "
+					   + "     order by name asc) m   "
+					   + " ) where no between ? and ? ";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1,  "%" + page.getFindStr() + "%");
+			ps.setString(2,  "%" + page.getFindStr() + "%");
+			ps.setString(3,  "%" + page.getFindStr() + "%");
+			ps.setString(4,  "%" + page.getFindStr() + "%");			
+			ps.setInt(5, page.getStartNo());
+			ps.setInt(6, page.getEndNo());
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -80,28 +91,57 @@ public class MemberDao {
 				vo.setZipcode(rs.getString("zipcode"));
 				vo.setMdate(rs.getString("mdate"));
 				list.add(vo);
-
 			}
 			
-		}catch(Exception e) {
-			e.printStackTrace();
+		}catch(Exception ex) {
+			ex.printStackTrace();
 		}finally {
 			return list;
 		}
 	}
 	
-	@SuppressWarnings("finally")
-	public List<MemberVo> select(){
-		List<MemberVo> list = new ArrayList<MemberVo>();
+	public String insert(MemberVo vo){
+		String msg = "회원 정보가 정상적으로 저장되었습니다.";
 		try {
 			
-		}catch(Exception e){
-			e.printStackTrace();
+		}catch(Exception ex) {
+			msg = ex.getMessage();
 		}finally {
-			return list;
+			return msg;
 		}
 	}
-	
+	public String update(MemberVo vo){
+		String msg = "회원 정보가 정상적으로 수정되었습니다.";
+		try {
+			
+		}catch(Exception ex) {
+			msg = ex.getMessage();
+		}finally {
+			return msg;
+		}
+	}
+
+	public String delete(MemberVo vo){
+		String msg = "회원 정보가 정상적으로 삭제되었습니다.";
+		try {
+			
+		}catch(Exception ex) {
+			msg = ex.getMessage();
+		}finally {
+			return msg;
+		}
+	}
+	public MemberVo view(String mid){
+		MemberVo vo = new MemberVo();
+		try {
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return vo;
+		}
+	}
+
 	
 
 }

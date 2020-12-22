@@ -8,9 +8,9 @@ public class MemberVo {
 	String phone;
 	String zipcode;
 	String address;
-	String mdate;
 	String photo;
-	
+	String delFile;
+	String mdate;
 	
 	public String getMdate() {
 		return mdate;
@@ -18,20 +18,6 @@ public class MemberVo {
 	public void setMdate(String mdate) {
 		this.mdate = mdate;
 	}
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-	public String getDelFile() {
-		return delFile;
-	}
-	public void setDelFile(String delFile) {
-		this.delFile = delFile;
-	}
-	String delFile;
-	
 	public String getMid() {
 		return mid;
 	}
@@ -74,5 +60,18 @@ public class MemberVo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	public String getDelFile() {
+		return delFile;
+	}
+	public void setDelFile(String delFile) {
+		this.delFile = delFile;
+	}
+	
 	
 }

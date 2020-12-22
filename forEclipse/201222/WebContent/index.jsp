@@ -12,6 +12,7 @@
 <body>
 <%
 	request.setCharacterEncoding("utf-8");
+	application.setAttribute("msg", "※ 다들 코로나 피해서 건강하고 행복한 연말 보냅시다.");
  // inc
  String inc = "intro.jsp";
  if(request.getParameter("inc") != null){
@@ -24,9 +25,11 @@
 	 sub = request.getParameter("sub");
  }
  
-
 %>
 <div id='index'>
+	<div id='g_msg'>
+		<%=application.getAttribute("msg") %>
+	</div>
 
 	<%-- header 영역 --%>	
 	<%@include file="header.jsp" %>
@@ -63,6 +66,7 @@
   //header의 높이와 바탕색
   $('#index>#header').css('height', '150px');
   $('#index>#header').css('background-color', '#ccc');
+  $('#index>#header').css('background-image', 'url(./images/back1.png)');
   $('#index>#header').css('margin-top', '5px');
   $('#index>#header').css('position', 'relative');
   
@@ -133,8 +137,3 @@
 </script>  
 </body>
 </html>
-
-
-
-
-
