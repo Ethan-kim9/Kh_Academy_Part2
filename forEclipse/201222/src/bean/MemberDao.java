@@ -1,10 +1,14 @@
 package bean;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import member.FileUpload;
 
 public class MemberDao {
 	Connection conn; //database의 연결 정보
@@ -103,9 +107,32 @@ public class MemberDao {
 	public String insert(MemberVo vo){
 		String msg = "회원 정보가 정상적으로 저장되었습니다.";
 		try {
+			String sql = "insert into members(mid , pwd, name, email, phone, zipcode, address, photo ,mdate) "
+					   + " values(?, ?, ?, ?, ?, ?, ?, ?, sysdate )";
 			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, vo.getMid());
+			ps.setString(2, vo.getPwd());
+			ps.setString(3, vo.getName());
+			ps.setString(4, vo.getEmail());
+			ps.setString(5, vo.getPhone());
+			ps.setString(6, vo.getZipcode());
+			ps.setString(7, vo.getAddress());
+			ps.setString(8, vo.getPhoto());
+			
+			int rowCnt = ps.executeUpdate();
+			if(rowCnt <1) {
+				msg = "회원정보 입력 중 오류발생";
+				throw new Exception(msg);
+				}
 		}catch(Exception ex) {
 			msg = ex.getMessage();
+			
+			// 업로드 된 파일을 삭제
+			File file = new File(FileUpload.saveDir + vo.getPhoto());
+			if(file.exists()) {
+				file.delete();
+			}
 		}finally {
 			return msg;
 		}
@@ -121,27 +148,58 @@ public class MemberDao {
 		}
 	}
 
-	public String delete(MemberVo vo){
-		String msg = "회원 정보가 정상적으로 삭제되었습니다.";
-		try {
-			
-		}catch(Exception ex) {
-			msg = ex.getMessage();
-		}finally {
-			return msg;
-		}
-	}
+
 	public MemberVo view(String mid){
 		MemberVo vo = new MemberVo();
 		try {
+			String sql = "SELECT * FROM members where mid = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, mid);
+			rs= ps.executeQuery();
 			
+			if(rs.next()) {
+				vo.setMid(rs.getString("mid"));
+				vo.setAddress(rs.getString("address"));
+				vo.setEmail(rs.getString("email"));
+				vo.setName(rs.getString("name"));
+				vo.setPhone(rs.getString("phone"));
+				vo.setPhoto(rs.getString("photo"));
+				vo.setZipcode(rs.getString("zipcode"));
+				vo.setMdate(rs.getString("mdate"));
+			}
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			return vo;
 		}
 	}
 
-	
+	public String delete(MemberVo vo) {
+		String msg = "회원정보가 정상적으로 삭제되었습니다.";
+		try {
+			String sql = "delete from members where mid = ? and pwd = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, vo.getMid());
+			ps.setString(2, vo.getPwd());
+			
+			int rowCnt = ps.executeUpdate();
+			if(rowCnt <1) {
+				throw new Exception("회원정보 삭제중 오류발생");
+			}
+			
+			File file = new File (FileUpload.saveDir + vo.getDelFile());
+			if(file.exists()) {
+				file.delete();
+			}
+		} catch (Exception e) {
+			msg = e.getMessage();
+		}
+		return msg;
+	}
 
 }

@@ -32,8 +32,10 @@ public class MemberServlet extends HttpServlet{
 		
 		int nowPage = 1;
 		String findStr = "";
-		
+		Page page;
+		MemberVo vo;
 		RequestDispatcher rd = null;
+		
 		dao = new MemberDao();
 		
 		switch(job) {
@@ -45,17 +47,50 @@ public class MemberServlet extends HttpServlet{
 				findStr = req.getParameter("findStr");
 			}
 			
-			Page page = new Page();
+			page = new Page();
 			page.setNowPage(nowPage);
 			page.setFindStr(findStr);
 			List<MemberVo> list = dao.select(page);
 			
 			req.setAttribute("list", list);
+			req.setAttribute("page", page);
 			rd = req.getRequestDispatcher(url+"select.jsp");
 			rd.forward(req, resp);
 			break;
-		}
-	
+			
+		case "insert":
+			FileUpload fu = new FileUpload(req);
+			vo = fu.getMember();
+			page =fu.getPage();
+			String msg = dao.insert(vo);
+			req.setAttribute("msg", msg);
+			rd = req.getRequestDispatcher(url +"result.jsp");
+			rd.forward(req, resp);
+			
+			break;
+			
+		case "view":
+			String mid = req.getParameter("mid");
+			vo = dao.view(mid);
+			req.setAttribute("vo", vo);
+			rd = req.getRequestDispatcher(url +"view.jsp");
+			rd.forward(req,resp);
+			break;
+		
+		case "delete":
+			vo = new MemberVo();
+			
+			vo.setMid(req.getParameter("mid"));
+			vo.setPwd(req.getParameter("pwd"));
+			vo.setDelFile(req.getParameter("delFile"));
+			
+			msg = dao.delete(vo);
+			
+			req.setAttribute("msg", msg);
+			rd = req.getRequestDispatcher(url + "result.jsp");
+			rd.forward(req, resp);
+			break;
+	}
 	
 	}
 

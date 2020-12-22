@@ -81,8 +81,12 @@ var member = function(){
 	if(btnSave != null){
 		btnSave.onclick = function(){
 			var frm = document.frm_member;
-			//frm.enctype = 'multipart/form-data';
-			frm.action = url + 'result.jsp';
+			if(frm.pwd.value != frm.pwdConfirl.value){
+				alert('암호를 확인해 주세요');
+				return;
+			}
+			frm.enctype = 'multipart/form-data'; // 파일 업로드시 반드시 들어가야하는 부분 이후 request.getparameter 처리 또는 cos.jar로 처리
+			frm.action = 'member.do?job=insert';
 			frm.submit();
 		}
 	}
@@ -91,7 +95,7 @@ var member = function(){
 	if(btnSelect != null){
 		btnSelect.onclick = function(){
 			var frm = document.frm_member;
-			frm.action = url + 'select.jsp';// frm.action='member.do?inc=select'
+			frm.action = 'member.do?job=select';// frm.action='member.do?inc=select'
 			frm.submit();
 		}
 	}
@@ -100,7 +104,7 @@ var member = function(){
 	if(btnFind != null){
 		btnFind.onclick = function(){
 			var frm = document.frm_member;
-			frm.action = url + 'select.jsp';
+			frm.action = 'member.do?job=select';
 			frm.nowPage.value = 1;
 			frm.submit();
 		}
@@ -119,13 +123,14 @@ var member = function(){
 
 function goPage(page){
 	var frm = document.frm_member;
-	frm.action = 'index.jsp?inc=./member/select.jsp';
+	frm.action = 'member.do?job=select';
 	frm.nowPage.value = page;
 	frm.submit();
 }
+
 function view(mid){
 	var frm = document.frm_member;
-	frm.action = 'index.jsp?inc=./member/view.jsp';
+	frm.action = 'member.do?job=view';
 	frm.mid.value = mid;
 	frm.submit();
 }
