@@ -8,6 +8,29 @@ public class MemberVo {
 	String phone;
 	String zipcode;
 	String address;
+	String mdate;
+	String photo;
+	
+	
+	public String getMdate() {
+		return mdate;
+	}
+	public void setMdate(String mdate) {
+		this.mdate = mdate;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	public String getDelFile() {
+		return delFile;
+	}
+	public void setDelFile(String delFile) {
+		this.delFile = delFile;
+	}
+	String delFile;
 	
 	public String getMid() {
 		return mid;
