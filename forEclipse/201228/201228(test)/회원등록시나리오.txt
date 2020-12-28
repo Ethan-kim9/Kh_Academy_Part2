@@ -1,0 +1,243 @@
+1. 테이터베이스 구축
+
+------------------------------------------------ 관리자 계정
+CREATE USER examuser IDENTIFIED BY 1234;
+GRANT CONNECT,RESOURCE TO examuser;
+------------------------------------------------ examuser 계정
+CREATE TABLE MEMBER_TBL(
+MEMBER_ID VARCHAR2(30) PRIMARY KEY,
+MEMBER_PW VARCHAR2(30) NOT NULL,
+MEMBER_NAME VARCHAR2(20) NOT NULL
+);
+
+2. index.jsp에서 회원가입페이지로 이동하는 서블릿(URL 매핑 : /joinFrm)
+
+회원 가입 페이지 위치 : /WEB-INF/joinFrm.jsp
+
+package com.iei.test;
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+* Servlet implementation class JoinFrmServlet
+*/
+
+@WebServlet(name = "JoinFrm", urlPatterns = { "/joinFrm" })
+public class JoinFrmServlet extends HttpServlet {
+private static final long serialVersionUID = 1L;
+/**
+* @see HttpServlet#HttpServlet()
+*/
+
+public JoinFrmServlet() {
+super();
+// TODO Auto-generated constructor stub
+}
+
+/**
+* @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+*/
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/joinFrm.jsp");
+dispatcher.forward(request, response);
+}
+/**
+* @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+*/
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+// TODO Auto-generated method stub
+doGet(request, response);
+}
+}
+
+3. 회원가입 페이지(회원 가입 폼에서 전송버튼 클릭)
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>회원가입</title>
+<style>
+label{
+width:100px;
+display: inline-block;
+}
+</style>
+</head>
+<body>
+<h1>회원가입</h1>
+<form action="/join" method="post">
+<label for="memberId">아이디</label><input type="text" name="memberId" id="memberId" required><br>
+<label for="memberPw">비밀번호 </label><input type="password" name="memberPw" id="memberPw" required><br>
+<label for="memberName">이름 </label><input type="text" name="memberName" id="memberName" required><br>
+<input type="submit" value="전송">
+</form>
+</body>
+</html>
+
+
+4. 회원가입 처리 서블릿(URL 매핑 : /join)
+package com.iei.test;
+
+import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import com.iei.dao.MemberDao;
+import com.iei.vo.Member;
+/**
+* Servlet implementation class JoinServlet
+*/
+@WebServlet(name = "Join", urlPatterns = { "/join" })
+public class JoinServlet extends HttpServlet {
+private static final long serialVersionUID = 1L;
+/**
+* @see HttpServlet#HttpServlet()
+*/
+public JoinServlet() {
+super();
+// TODO Auto-generated constructor stub
+}
+/**
+* @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+*/
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+request.setCharacterEncoding("utf-8");
+String memberId = request.getParameter("memberId");
+String memberPw = request.getParameter("password");
+String memberName = request.getParameter("memberName");
+Member member= new Member();
+int result = new MemberDao().insertMember(member);
+String msg = "";
+if(result==0) {
+msg = "회원가입 실패입니다.";
+}else {
+msg = "회원가입 성공입니다.";
+}
+
+RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/joinResult.jsp");
+request.setAttribute("msg", msg);
+dispatcher.forward(request, response);
+}
+
+/**
+* @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+*/
+
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+// TODO Auto-generated method stub
+doGet(request, response);
+}
+}
+
+5. Member객체 클래스(Member.java)
+
+package com.iei.vo;
+
+public class Member {
+private String memberId;
+private String memberPw;
+private String memberName;
+public Member() {
+super();
+}
+
+public Member(String memberId, String memberPw, String memberName) {
+super();
+this.memberId = memberId;
+this.memberPw = memberPw;
+this.memberName = memberName;
+}
+
+public String getMemberId() {
+return memberId;
+}
+
+public void setMemberId(String memberId) {
+this.memberId = memberId;
+}
+
+public String getMemberPw() {
+return memberPw;
+}
+
+public void setMemberPw(String memberPw) {
+this.memberPw = memberPw;
+}
+
+public String getMemberName() {
+return memberName;
+}
+public void setMemberName(String memberName) {
+this.memberName = memberName;
+}
+}
+
+6. MemberDao 클래스
+
+package com.iei.dao;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import com.iei.vo.Member;
+
+public class MemberDao {
+public int insertMember(Member member) {
+Connection conn = null;
+PreparedStatement pstmt = null;
+String query = "insert into member_tbl values(?,?,?)";
+int result = 0;
+try {
+Class.forName("oracle.jdbc.driver.OracleDriver");
+conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "examuser", "1234");
+pstmt = conn.prepareStatement(query);
+pstmt.setString(1,member.getMemberId());
+pstmt.setString(2,member.getMemberPw());
+pstmt.setString(3,member.getMemberName());
+if(result>0) {
+conn.commit();
+}else {
+conn.rollback();
+}
+} catch (ClassNotFoundException e) {
+e.printStackTrace();
+} catch (SQLException e) {
+e.printStackTrace();
+}finally {
+try {
+pstmt.close();
+conn.close();
+} catch (SQLException e) {
+e.printStackTrace();
+}
+}
+return result;
+}
+}
+
+7. 결과 처리 페이지(위치 : /WEB-INF/joinResult.jsp)
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%
+String msg = (String)request.getAttribute("message");
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1><%=msg %></h1>
+</body>
+</html>
