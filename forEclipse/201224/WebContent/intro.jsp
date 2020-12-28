@@ -27,8 +27,3 @@ $('#header').css('color', '#f00'); // #header{ color : #f00; }
 </script>
 </body>
 </html>
-
-
-
-
-
