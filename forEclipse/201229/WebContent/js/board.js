@@ -14,6 +14,54 @@ var board = function(){
 	var btnSelect = getID('btnSelect');
 	var btnSave = getID('btnSave');
 	var btnFind = getID('btnFind');
+	var btnDelete = getID('btnDelete');
+	var btnModify = getID('btnModify');
+	var btnUpdate = getID('btnUpdate');
+	var btnRepl	  = getID('btnRepl');
+	var btnReplSave = getID('btnReplSave');
+	
+	
+	if(btnReplSave !=null){
+		btnReplSave.onclick = function(){
+			frm.action= url + 'result.jsp';
+			frm.submit();
+		}
+	}
+	if(btnRepl != null){
+		btnRepl.onclick = function(){
+			frm.action= url + 'repl.jsp';
+			frm.submit();
+		}
+	}
+	
+	if(btnUpdate != null){
+		btnUpdate.onclick =function(){
+			var passwordCheck = prompt("수정을 위해선 암호가 필요합니다.")
+			if(passwordCheck != null){
+				frm.pwd.value = pwd;
+				frm.action = url +'result.jsp';
+				frm.submit();
+			}
+		}
+	}
+	
+	
+	if(btnModify != null){
+		btnModify.onclick = function(){
+			frm.action = url + 'update.jsp';
+			frm.submit();
+		}
+	}
+	
+	if(btnDelete != null){
+		btnDelete.onclick = function(){
+			var question = confirm("정말 삭제하시겠습니까?");
+			if(question){
+				frm.action = url+ 'result.jsp';
+				frm.submit();
+			}
+		}
+	}
 	
 	if(btnFind != null){
 		btnFind.onclick = function(){
@@ -46,7 +94,20 @@ var board = function(){
 }
 
 
+function goPage(page){
+	var frm = document.frm_board;
+	frm.nowPage.value = page;
+	frm.action = 'index.jsp?inc=./board/select.jsp';
+	frm.submit();
+}
 
+
+function view(serial){
+	var frm = document.frm_board;
+	frm.serial.value = serial;
+	frm.action = 'index.jsp?inc=./board/view.jsp';
+	frm.submit();
+}
 
 
 

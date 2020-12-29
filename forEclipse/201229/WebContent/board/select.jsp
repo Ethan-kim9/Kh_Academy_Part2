@@ -18,6 +18,7 @@
 			<input type='text' name='findStr' id='findStr' value = '${param.findStr }'>
 			<input type='button' name='btnFind' id='btnFind' value='조회'/>
 			<input type='text'	name='nowPage' value= '${(empty param.nowPage)? 1: param.nowPage }' />
+			<input type='text' name='serial' value='0' />
 		</div>
 	</form>
 
@@ -30,7 +31,7 @@
 	</div>
 	<div class='items'>
 		<c:forEach var='vo' begin='1' end='12'>
-			<div class='item'>
+			<div class='item' onclick='view(${vo})'>
 				<span class='no'>NO${vo}</span>
 				<span class='subject'>제목(10)</span>
 				<span class='mid'>작성자</span>
@@ -41,15 +42,15 @@
 	</div>	
 	
 	<div class='btns'>
-		<input type='button' value='맨점'>
+		<input type='button' value='시작'>
 		<input type='button' value='이전'>
 		
 		<c:forEach var='i' begin='1' end='5'>
-				<input type='button' value='${i }'>
+				<input type='button' value='${i }' onclick ='goPage(${i })'>
 		</c:forEach>
 
 		<input type='button' value='다음'>
-		<input type='button' value='맨끝'>
+		<input type='button' value='끝'>
 	</div>
 </div>
 

@@ -34,9 +34,13 @@
 		</div>
 	
 		<div class='btns'>
-			<input type='button' value='저장' id='btnSave' />
+			<input type='button' value='저장' id='btnReplSave' />
 			<input type='button' value='목록' id='btnSelect' />
 		</div>
+		
+		<input type='text' name='findStr' value='${param.findStr }'/>
+		<input type='text' name='nowPage' value='${param.nowPage }'/>
+		<input type='text' name='serial'  value='${param.serial }'/>
 	</form>
 </div>
 

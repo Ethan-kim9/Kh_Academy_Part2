@@ -22,8 +22,6 @@
 		<label></label>
 		<textarea name='doc' rows='7' cols='80'></textarea><br/>
 		
-		<label>암호</label>
-		<input type='password' name='pwd' placeholder='영숫자와 !$-_ 만 가능' /><br/>
 		
 		<label>첨부</label>
 		<div>
@@ -45,6 +43,11 @@
 			<input type='button' value='수정' id='btnUpdate' />
 			<input type='button' value='목록' id='btnSelect' />
 		</div>
+		
+		<input type='text' name='findStr' value='${param.findStr }'/>
+		<input type='text' name='nowPage' value='${param.nowPage }'/>
+		<input type='text' name='serial'  value='${param.serial }'/>
+		<input type='password' name='pwd' placeholder='영숫자와 !$-_ 만 가능' /><br/>
 	</form>
 </div>
 
