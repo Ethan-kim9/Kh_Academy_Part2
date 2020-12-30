@@ -14,12 +14,10 @@
 	<div id='msg'>
 		입력|수정|삭제|댓글 처리가 됨
 	</div>
-	<form name='frm_board' method='post'>
-		<input type='text' name='findStr' value= '${param.findStr }'/>
-		<input type='text' name='nowPage' value= '${param.nowPage }'/>
-	<div>
+	<form name='frm_board' method='post' class='frm_msg'>
 		<input type='button' value='목록' id='btnSelect' />
-	</div>
+		<input type='hidden' name='findStr' value= '${param.findStr }'/>
+		<input type='hidden' name='nowPage' value= '${param.nowPage }'/>
 	
 	</form>
 

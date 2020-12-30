@@ -1,132 +1,95 @@
-@charset "UTF-8";
 
-/*--------- 공통 부분 -------------- */
-#member .btns{
-	text-align: center;
-}
-#member .btns>input{
-	border: 1px solid #ddc;
-	border-radius: 10px;
+
+
+#board{
+	width: 100%;
+	padding: 20px;
+	boxs-sizing: border-box;
 }
 
-#member .result_msg{
-	margin:60px auto;
-	width:400px;
-	border:2px solid #f55;
-	border-radius: 20px;
-	padding:20px;
-	box-sizing : border-box;
-	text-align: center;
-	box-shadow: 3px 3px 7px #999;
+#board span{
+	display : inline-block; /*넓이 조정 및 소속한 위치의 우측에 다른값을 삽입하기 위해서*/
+}
+
+#board input[type=button]{
+	border-radius: 12px;
+	border : 1px solid #bbb;
+	font-size: 0.8em;
 }
 
 
-#member{
-	width:100%;
-	padding-right:20px;
-	box-sizing: border-box;
+#board > form label {
+	display : inline-block;
+	width: 80px;
+	text-align: right;
 }
 
-#member #frm_member input{
-	border: 1px solid #bbb;
-	border-radius: 10px;
-}
+/* select */
 
-#member #frm_member>div{
-	display: inline-block;
+#board > form > .find {
+	display : inline-block; 
 	float:right;
 }
 
-#member .title{
-	margin-top:6px;
-	background-color: #555;
-	padding: 4px 0;
-	color : #fff;
+
+#board .title{
+	clear:both;
+	background-color:#777;
+	margin-top: 3px;
+	color:#fff;
+	padding:2px;
 }
-#member span{
+
+#board #attach_zone{
+	margin-top:7px;
 	display: inline-block;
 }
-#member .no { width:70px;}
-#member .mid{ width:100px;}
-#member .name{ width:120px;}
-#member .email{ width:200px;}
-#member .mdate{ width:110px;}
 
-#member .items>div{
-	line-height:25px;
-}
-#member .items>div:hover{
-	background-color: #bbb;
- 	cursor: pointer;
-}
+/*게시판 디테일 세팅*/
+#board .no { width:70px; text-align: center;}
+#board .subject {width:240px;}
+#board .mid {width:100px;}
+#board .mdate{width:100px;}
+#board .hit{width:70px; text-align: center;}
 
-#member .items>div:last-child{
-	border-bottom:2px solid #aaa;
-	margin-bottom:10px;
+#board .btns {
+	border-top: 2px solid #aaa;
+	margin-top: 3px;
+	padding-top: 10px;
+	text-align :center;
 }
 
-#member .paging{
+
+
+/*	insert	*/
+
+#board form input[name=subject]{
+	width:500px;
+}
+
+#board form textarea[name=doc]{
+	padding-top:0px;
+	margin-top:7px;
+	width:500px;
+	height: 150px;
+}
+
+
+/* result */
+
+#board #msg{
+	width:300px;
+	margin:auto;
+	background-color:#eee;
+	border:2px solid #ccc;
+	box-shadow: 2px 2px 3px #bbb;
 	text-align: center;
-}
-#member .paging>input{
-	border: 1px solid #ddc;
-	border-radius: 10px;
-}
-
-#member .paging>input:hover{
-	cursor: pointer;
+	padding:30px;
+	box-sizing: border-box;
+	border-radius: 15px;
 }
 
-/* -------- insert -----------------------*/
-#member .insert{
-	position: relative;
+#board .frm_msg{
+	margin-top: 20px;
+	text-align:center;
 }
-#member .insert>label{
-	display: inline-block;
-	width:90px;
-	text-align: right;
-	line-height: 24px;
-}
-
-#member .insert>img{
-	position: absolute;
-	top:5px;
-	right:25px;
-}
-
-
-/* -------- update -----------------------*/
-#member .update>label{
-	display: inline-block;
-	width:90px;
-	text-align: right;
-	line-height: 24px;
-}
-
-#member .update img{
-	margin-top:10px;
-}
-
-/* ----------- view ---------------------- */
-#member .view>label{
-	display: inline-block;
-	width:90px;
-	text-align: right;
-	line-height: 24px;
-}
-#member .view img{
-	margin-top:10px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
