@@ -9,6 +9,8 @@ var board = function(){
 	var frm = document.frm_board;
 	
 	var url = 'index.jsp?inc=./board/'; //board.do?job=
+	var job = "board.do?job=";
+	
 	
 	var btnInsert = getID('btnInsert');
 	var btnSelect = getID('btnSelect');
@@ -21,25 +23,31 @@ var board = function(){
 	var btnReplSave = getID('btnReplSave');
 	
 	
+	//댓글 저장
 	if(btnReplSave !=null){
 		btnReplSave.onclick = function(){
-			frm.action= url + 'result.jsp';
+			frm.enctype = 'multipart/form-data';
+			frm.action= job + 'replR';
 			frm.submit();
 		}
 	}
+	// 댓글작성 화면을 호출해줌
 	if(btnRepl != null){
 		btnRepl.onclick = function(){
-			frm.action= url + 'repl.jsp';
+			frm.action= job + 'repl';
 			frm.submit();
 		}
 	}
 	
+	
+	//게시물 수정 및 저장
 	if(btnUpdate != null){
 		btnUpdate.onclick =function(){
 			var passwordCheck = prompt("수정을 위해선 암호가 필요합니다.")
 			if(passwordCheck != null){
 				frm.pwd.value = pwd;
-				frm.action = url +'result.jsp';
+				frm.enctype = 'multipart/form-data';
+				frm.action = job +'updateR';
 				frm.submit();
 			}
 		}
@@ -48,7 +56,7 @@ var board = function(){
 	
 	if(btnModify != null){
 		btnModify.onclick = function(){
-			frm.action = url + 'update.jsp';
+			frm.action = job + 'update';
 			frm.submit();
 		}
 	}
@@ -56,8 +64,9 @@ var board = function(){
 	if(btnDelete != null){
 		btnDelete.onclick = function(){
 			var question = confirm("정말 삭제하시겠습니까?");
-			if(question){
-				frm.action = url+ 'result.jsp';
+			if(question != null){
+				frm.pwd.value = question;
+				frm.action = job + 'deleteR';
 				frm.submit();
 			}
 		}
@@ -66,28 +75,29 @@ var board = function(){
 	if(btnFind != null){
 		btnFind.onclick = function(){
 			frm.nowPage.value = 1;
-			frm.action = url + 'select.jsp';
+			frm.action = job + 'select';
 			frm.submit();
 		}
 	}
 	if(btnSave != null){
 		btnSave.onclick = function(){
-			frm.action = url + 'result.jsp';
+			frm.enctype = 'multipart/form-data';
+			frm.action = job + 'insertR';
 			frm.submit();
 		}
 	}
 	
 	if(btnSelect != null){
 		btnSelect.onclick = function(){
-			frm.action = url + 'select.jsp';
+			frm.action = job + 'select';
 			frm.submit();
 		}
 	}
 	
-	if(btnInsert !=null){
+	if(btnInsert != null){
 		btnInsert.onclick = function(){
 			
-		frm.action = url + 'insert.jsp'; 
+		frm.action = job + 'insert'; 
 		frm.submit();
 		}
 	}
@@ -95,17 +105,19 @@ var board = function(){
 
 
 function goPage(page){
+	var job = "board.do?job=";
 	var frm = document.frm_board;
 	frm.nowPage.value = page;
-	frm.action = 'index.jsp?inc=./board/select.jsp';
+	frm.action = job + 'select';
 	frm.submit();
 }
 
 
 function view(serial){
+	var job = "board.do?job=";
 	var frm = document.frm_board;
 	frm.serial.value = serial;
-	frm.action = 'index.jsp?inc=./board/view.jsp';
+	frm.action = job + 'view';
 	frm.submit();
 }
 
