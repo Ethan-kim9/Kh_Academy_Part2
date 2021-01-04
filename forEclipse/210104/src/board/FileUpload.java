@@ -13,14 +13,10 @@ import bean.MemberVo;
 import bean.Page;
 
 public class FileUpload {
-	// 학원
-	//public static final String saveDir = "C:\\Users\\user1\\Documents\\hipwg\\git\\kh-web-2020\\WebContent\\upload\\";
-	
+
 	//home
-	//public static final String saveDir = "C:/Users/jobtc/git/kh-web-2020/kh-web-2020/WebContent/upload/";
-	
-	// notebook
-	public static final String saveDir = "C:/Users/pwg/git/kh-web-2020/kh-web-2020/WebContent/upload/";
+	public static final String saveDir = "C:\\Users\\Ethan Kim\\Documents\\JG\\hello";
+
 	int maxSize = 1024*1024*100;//100Mb;
 	String encoding = "utf-8";
 	MultipartRequest mul;
@@ -105,4 +101,6 @@ public class FileUpload {
 		return page;
 		
 	}
+	
+	
 }

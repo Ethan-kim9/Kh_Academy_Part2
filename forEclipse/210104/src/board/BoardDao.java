@@ -159,9 +159,11 @@ public class BoardDao {
 			attList = sqlSession.selectList("board.select_att", vo.getSerial());
 			int cnt = sqlSession.delete("board.delete", vo);
 			if(cnt>0) {
-				cnt = sqlSession.delete("board.delete_att_pserial", vo.getSerial());
-				if(cnt<1) throw new Exception("게시물 첨부 삭제중 오류 발생");
-				delFile(attList);
+				if(attList.size()>0) {
+					cnt = sqlSession.delete("board.delete_att_pserial", vo.getSerial());
+					if(cnt<1) throw new Exception("게시물 첨부 삭제중 오류 발생");
+					delFile(attList);
+				}
 			}else {
 				throw new Exception("게시물 삭제중 오류 발생");
 			}
