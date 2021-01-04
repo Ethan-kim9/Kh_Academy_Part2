@@ -42,8 +42,8 @@
 
 
 <script>
-board();
-fileUpload('attach_zone');
+	board();
+	fileUpload('attach_zone');
 </script>
 </body>
 </html>

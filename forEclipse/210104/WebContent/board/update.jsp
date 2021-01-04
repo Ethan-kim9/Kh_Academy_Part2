@@ -8,6 +8,7 @@
 <title>게시판</title>
 <link rel='stylesheet' type='text/css' href='./css/board.css'>
 <script src='./js/board.js'></script>
+<script src='./js/fileUpload.js'></script>
 </head>
 <body>
 <div id='board'>
@@ -23,21 +24,21 @@
 		<textarea name='doc' rows='7' cols='80'></textarea><br/>
 		
 		
-		<label>첨부</label>
-		<div>
-			<img src='http://placehold.it/120x100' />
-			<img src='http://placehold.it/120x100' />
-			<img src='http://placehold.it/120x100' />
-			<img src='http://placehold.it/120x100' />
+		<label></label>
+		<div class='inner'>
+			<c:forEach items="${vo.attList }" var="att">
+				<div class='attach_old'>
+					<img src='./upload/${att.sysFile }' width='120px' height='100px'/>
+					<input type='checkbox' name='delFiles'  value='${att.sysFile }'/>
+				</div>
+			</c:forEach>
 		</div>
+		<br/>
 		
-		<label>새첨부</label>
-		<div id='attach_zone'>
-			<img src='http://placehold.it/120x100' />
-			<img src='http://placehold.it/120x100' />
-			<img src='http://placehold.it/120x100' />
-			<img src='http://placehold.it/120x100' />
-		</div>
+		
+		<label>추가</label>
+		<div id='attach_zone' class='inner'></div>
+		<br/>
 	
 		<div class='btns'>
 			<input type='button' value='수정' id='btnUpdate' />
@@ -52,6 +53,9 @@
 </div>
 
 
-<script>board()</script>
+<script>
+board()
+fileUpload('attach_zone');
+</script>
 </body>
 </html>
