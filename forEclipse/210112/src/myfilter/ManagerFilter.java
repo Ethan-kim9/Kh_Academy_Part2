@@ -16,7 +16,7 @@ import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 /**
  * Servlet Filter implementation class ManagerFilter
  */
-@WebFilter("/ManagerFilter")
+@WebFilter({"/member.kim" ,"/sale.park"})
 public class ManagerFilter implements Filter {
 
     /**
@@ -50,14 +50,15 @@ public class ManagerFilter implements Filter {
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
 		
-		if(mid != null || !mid.contentEquals("manager")) {
-			request.getRequestDispatcher("login_fail.jsp").forward(request, response);;
-		}else if(url.lastIndexOf("member")>=0) {
-			
+		if(mid == null || !mid.equals("manager")) {
+			request.getRequestDispatcher("./filter/login_fail.jsp").forward(request, response);
+		}else {
+			if(url.lastIndexOf("member")>=0) {
+			request.getRequestDispatcher("./filter/member_select.jsp").forward(request, response);
 		}else if(url.lastIndexOf("sale")>=0) {
-			
+			request.getRequestDispatcher("./filter/sale_select.jsp").forward(request, response);
+			}
 		}
-
 	}
 		
 

@@ -17,7 +17,7 @@
 	<div id='loginFail'>
 		<label>관리자만 가능한 서비스입니다</label>
 		<p/>
-		<a href='filter_main.jsp'>홈으로</a>
+		<a href='./filter/filter_main.jsp'>홈으로</a>
 	</div>
 </body>
 </html>
