@@ -23,7 +23,7 @@
 			<li>비동기방식으로 서버와 통신하며, 브라우저의 새로고침없이 특정 영역의 내용을 동적으로 변경할 수 있다.</li>
 			<li>프로그램 방식을 Web방식에서 App방식으로 처리할 수 있다.</li>
 			<li>AJAX(Asynchronous JavaScript XML)의 약자</li>
-			<li>Ajax의 가장 중추적인 역활을 하는 객체는 XMLHttpRequest 이다.</li>		
+			<li>Ajax의 가장 중추적인 역할을 하는 객체는 XMLHttpRequest 이다.</li>		
 		</ul>
 	</fieldset>
 	
