@@ -1,4 +1,4 @@
-package di_step3;
+package di_step4;
 
 public class Main {
 
@@ -17,10 +17,11 @@ public class Main {
 	}
 	public static void main(String[] args) {
 	 Assembler as = new Assembler();
-	 DB db = as.getDb();
+	 DB db = as.getDB();
 	 Main m = new Main(db);
 	 
 	 m.method(db);
 	 
 	}
 }
+
