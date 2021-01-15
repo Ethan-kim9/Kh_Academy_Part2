@@ -10,7 +10,6 @@ public class Main {
 				new FileSystemXmlApplicationContext("src/di_step5/di_step5.xml");
 		
 		MemberDao dao = context.getBean("dao", MemberDao.class);
-	 
 	}
 }
 
