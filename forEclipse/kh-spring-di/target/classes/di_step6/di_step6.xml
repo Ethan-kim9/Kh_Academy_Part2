@@ -6,8 +6,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-	<bean id='db' 	class='di_step6.MyDB'/>
+	<bean id='db' 	class='di_step6.Database'/>
 	<bean id='dao' 	class='di_step6.MemberDao'>
-		<constructor-arg ref='db'/> <!-- 메서드를 통한 의존성 주입 -->
+		<property name="db" ref="db" /> <!-- 메서드를 통한 의존성 주입 -->
 	</bean>
 </beans>

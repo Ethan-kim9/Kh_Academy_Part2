@@ -1,4 +1,4 @@
-package di_step6;
+package di_anno;
 
 import java.util.ArrayList;
 import java.util.List;

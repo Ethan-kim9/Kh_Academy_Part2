@@ -1,17 +1,16 @@
-package di_step6;
+package di_anno;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OracleDB implements DB{
-	
-	String r = null;
-	
+public class MyDB implements DB {
+
 	@Override
 	public List<String> select(String findStr) {
 		List<String> list = new ArrayList<String>();
-		r = "오라클에서 검색됨!!";
-		list.add(r);
+		String a = "오라클에서 검색이 됐네요.";
+		list.add(a);
+		
 		return list;
 	}
 
