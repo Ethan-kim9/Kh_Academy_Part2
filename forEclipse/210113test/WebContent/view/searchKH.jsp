@@ -18,13 +18,6 @@
 		<input type="text" name= "kh" />
 		<input type="button" value="조회하기" class="btnSearch"/>
 	<div id="answer">
-	<% if(obj != null) 
-	{
-			out.print("<li>"  + obj.get("khName") 	+ "</li>");
-			out.print("<li>"  + obj.get("addr") 	+ "</li>");
-			out.print("<li>"  + obj.get("fax") 		+ "</li>");
-	} 
-	%>		
 	</div>
 </body>
 <script>
@@ -35,8 +28,13 @@ $('.btnSearch').on('click', function(){
 		url  : '<%=path %>/searchKH',
 		data : { searchName : value },
 		success  : function(obj){
+			var object =	"<ul>"
+						+ 		"<li>"  + obj.name 	+ "</li>"
+						+		"<li>"  + obj.addr 	+ "</li>"
+						+		"<li>"  + obj.fax 	+ "</li>"
+						+	"</ul>"
 			alert('조회되었습니다.');
-			document.getElementById("answer").innerHTML= obj.get("name");
+			document.getElementById("answer").innerHTML= object;
 		},
 		error    : function(){
 			document.getElementById("answer").innerHTML="정보가 없습니다";
