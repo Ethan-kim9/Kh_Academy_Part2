@@ -8,6 +8,6 @@
 
 	<bean id='db' class='di_step5.MyDB'/>
 	<bean id='dao' class='di_step5.MemberDao'>
-		<constructor-arg ref='db'/>
+		<constructor-arg ref='db'/> <!-- 생성자를 통한 의존성주입 -->
 	</bean>
 </beans>
