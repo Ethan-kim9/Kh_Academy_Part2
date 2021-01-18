@@ -37,6 +37,7 @@
 				class='org.springframework.aop.support.JdkRegexpMethodPointcut'>
 				<property name='patterns'> <!-- 리스트 타입 -->
 					<list>
+						<value>.*select.*</value>
 						<value>.*insert.*</value>
 						<value>.*delete.*</value>
 						<value>.*update.*</value>

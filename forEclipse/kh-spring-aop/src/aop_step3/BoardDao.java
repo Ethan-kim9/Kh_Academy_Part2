@@ -1,5 +1,6 @@
 package aop_step3;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BoardDao implements Dao {
@@ -12,7 +13,13 @@ public class BoardDao implements Dao {
 
 		@Override
 		public List<String> select() {
-			return null;
+			List<String> list = new ArrayList<>();
+			
+			list.add("고른 것");
+			list.add("고른 것2");
+			list.add("고른 것3");
+			
+			return list;
 		}
 
 		@Override

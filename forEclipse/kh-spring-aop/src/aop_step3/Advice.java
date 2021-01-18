@@ -1,7 +1,4 @@
 package aop_step3;
-
-import java.util.List;
-
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
