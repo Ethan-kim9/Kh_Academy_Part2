@@ -23,13 +23,13 @@ public class BoardDao implements Dao {
 		@Override
 		public String update() {
 			// TODO Auto-generated method stub
-			return null;
+			return "BoardDao.update()";
 		}
 
 		@Override
 		public String delete() {
 			// TODO Auto-generated method stub
-			return null;
+			return "BoardDao.delete()";
 		}
 
 		@Override
