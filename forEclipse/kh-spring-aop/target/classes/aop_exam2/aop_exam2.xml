@@ -29,8 +29,7 @@
 		</property>
 	</bean>
 	
-	<bean id='advisor'
-		class='org.springframework.aop.support.DefaultPointcutAdvisor'>
+	<bean id='advisor' class='org.springframework.aop.support.DefaultPointcutAdvisor'>
 		<property name='advice' ref='advice' />
 		<property name="pointcut">
 			<bean
