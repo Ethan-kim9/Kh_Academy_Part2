@@ -1,49 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
-	 http://www.springframework.org/schema/beans
-	 http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+<beans	xmlns				="http://www.springframework.org/schema/beans"
+		xmlns:xsi			="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context 		="http://www.springframework.org/schema/context"
+		xmlns:aop	  		="http://www.springframework.org/schema/aop"
+		
+		xsi:schemaLocation	="http://www.springframework.org/schema/beans
+							  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+							  http://www.springframework.org/schema/context
+							  http://www.springframework.org/schema/context/spring-context-4.0.xsd
+							  http://www.springframework.org/schema/aop
+							  http://www.springframework.org/schema/aop/spring-aop-4.0.xsd"
+>
 
 
 	<!-- 횡단적 관심사, 각 dao에는 login check가 없음 -->
-	<bean id="bDao" class="aop_step3.BoardDao" />
-	<bean id="mDao" class="aop_step3.MemberDao" />
-	<bean id="sDao" class="aop_step3.SalesDao" />
+	<bean id="bDao" class="aop_aspect.BoardDao" 	/>
+	<bean id="mDao" class="aop_aspect.MemberDao" 	/>
+	<bean id="sDao" class="aop_aspect.SalesDao" 	/>
 
 
 	<!-- login check는 advice에서만 존재한다. -->
-	<bean id="advice" class="aop_step3.Advice" />
+	<bean id="advice" class="aop_aspect.Advice" />
 
-
-	<!-- Spring AOP -->
-	<bean id='proxy'
-		class='org.springframework.aop.framework.ProxyFactoryBean'>
-		<!-- ProxyFactoryBean 안에 setTarget이라는 메서드가 있고, property name은 변화하지 않는다. -->
-		<property name='target' ref='bDao' />
-		<property name='interceptorNames'>
-			<list>
-				<value>advisor</value>
-			</list>
-		</property>
-	</bean>
-	<bean id='advisor'
-		class='org.springframework.aop.support.DefaultPointcutAdvisor'>
-		<!-- advice의 weaving 장소, 즉 Joinpoint / 분리된 관심사가 실행되는 지점 -->
-		<property name='advice' ref='advice' />
-		<property name="pointcut">
-			<bean
-				class='org.springframework.aop.support.JdkRegexpMethodPointcut'>
-				<property name='patterns'> <!-- 리스트 타입 -->
-					<list>
-						<value>.*select.*</value>
-						<value>.*insert.*</value>
-						<value>.*delete.*</value>
-						<value>.*update.*</value>
-					</list>
-				</property>
-			</bean>
-		</property>
-	</bean>
+	<!-- aspectJ aop -->
+	<aop:config>
+		<aop:aspect id="aspect" ref="advice">
+			<aop:pointcut expression="execution(* select(..))" id="pointcut"/>
+			<aop:before method="loginCheck" pointcut-ref="pointcut"/>
+		</aop:aspect>
+		
+				<aop:aspect id="around" ref="advice">
+			<aop:pointcut expression="execution(* insert(..))" id="aroundPointcut"/>
+			<aop:before method="around" pointcut-ref="aroundPointcut"/>
+		</aop:aspect>
+	</aop:config>
+	
 </beans>

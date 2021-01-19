@@ -1,24 +1,31 @@
 package aop_aspect;
-import org.aopalliance.intercept.MethodInterceptor;
-import org.aopalliance.intercept.MethodInvocation;
 
-public class Advice implements MethodInterceptor{
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-	@Override
-	public Object invoke(MethodInvocation invocation) throws Throwable {
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+
+public class Advice{
+	
+	//before aspect
+	public boolean loginCheck(JoinPoint point) {
+		System.out.println("로그인 여부를 체크합니다. :)");
 		
-		Object obj = null;
-		if(loginCheck()) {			
-				obj = invocation.proceed(); //invocation.proceed 가 실행 후 내가원하는 dao가 실행될 수 있다.		
-		}
-		//String rs = (String)invocation.proceed();
-		//List<String> list = (List<String>)invocation.proceed();
-		return obj;
+		/*실제 메서드가 실행되는 경우*/
+		
+		return true;
 	}
 	
-	public boolean loginCheck() {
-		// 로그인 여부를 판단하는 프로세스
-		System.out.println("login Checking~~");
-		return true;
+	public Object around(ProceedingJoinPoint point) throws Throwable {
+		System.out.println(log());
+		point.proceed();
+		System.out.println(log());
+		return null;
+	}
+	
+	public String log() {
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD(E) hh:mm:ss:SS");
+		return (String)sdf.format(new Date());
 	}
 }
