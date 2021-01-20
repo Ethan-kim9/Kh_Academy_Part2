@@ -16,27 +16,14 @@
 
 	<!-- 횡단적 관심사, 각 dao에는 login check가 없음 -->
 	
-	<bean id="cDao" class="aop_exam3.Computer" />
-	<bean id="rDao" class="aop_exam3.Radio" />
-	<bean id="tDao" class="aop_exam3.Tv" />
-
-	<bean id="beforeAdvice" class="aop_exam3.BeforeAdvice" />
-	<bean id="afterAdvice" 	class="aop_exam3.AfterAdvice" />
-
-	<aop:config>
-		<aop:aspect id="before" ref="beforeAdvice">
-			<aop:pointcut expression="     execution(* read(..))
-										|| execution(* update(..))
-										|| execution(* delete(..))" 
-									id="beforePointcut"/>
-			<aop:before method="loginCheck" pointcut-ref="beforePointcut"/>
-		</aop:aspect>
-		
-		<aop:aspect id="after" ref="afterAdvice">
-			<aop:pointcut expression="execution(* create(..))" id="afterPointcut"/>
-			<aop:after method="log" pointcut-ref="afterPointcut"/>
-		</aop:aspect>
-	</aop:config>
+	<context:annotation-config/>
 	
+	<bean id="cDao" class="aop_anno.Computer" />
+	<bean id="rDao" class="aop_anno.Radio" />
+	<bean id="tDao" class="aop_anno.Tv" />
+
+	<bean id="Advice" class="aop_anno.Advice" />
+
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
 	
 </beans>

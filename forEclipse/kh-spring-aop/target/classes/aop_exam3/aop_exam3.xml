@@ -23,8 +23,6 @@
 	<bean id="beforeAdvice" class="aop_exam3.BeforeAdvice" />
 	<bean id="afterAdvice" 	class="aop_exam3.AfterAdvice" />
 
-	<aop:aspectj-autoproxy>
-	</aop:aspectj-autoproxy>
 	<aop:config>
 		<aop:aspect id="before" ref="beforeAdvice">
 			<aop:pointcut expression="     execution(* read(..))

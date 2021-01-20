@@ -1,4 +1,4 @@
-package aop_exam3;
+package aop_anno;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public class Main {
 
 	public Main() {
 		ApplicationContext context = 
-				new FileSystemXmlApplicationContext("src/aop_exam3/aop_exam3.xml");
+				new FileSystemXmlApplicationContext("src/aop_anno/aop_anno.xml");
 		
 		Product product = (Product)context.getBean("tDao");
 		
@@ -22,6 +22,7 @@ public class Main {
 		System.out.println("-------------");
 		
 		List<String> list = product.create("LG");
+		System.out.println(list);
 		list.removeAll(list);
 	
 	}

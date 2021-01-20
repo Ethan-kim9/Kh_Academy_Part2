@@ -1,4 +1,4 @@
-package aop_exam3;
+package aop_anno;
 
 public class BeforeAdvice {
 	public boolean loginCheck() {
@@ -7,4 +7,3 @@ public class BeforeAdvice {
 		return true;
 	}
 }
-
