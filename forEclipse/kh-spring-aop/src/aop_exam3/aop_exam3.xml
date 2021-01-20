@@ -15,25 +15,30 @@
 
 
 	<!-- 횡단적 관심사, 각 dao에는 login check가 없음 -->
-	<bean id="bDao" class="aop_aspect.BoardDao" 	/>
-	<bean id="mDao" class="aop_aspect.MemberDao" 	/>
-	<bean id="sDao" class="aop_aspect.SalesDao" 	/>
+	
+	<bean id="cDao" class="aop_exam3.Computer" />
+	<bean id="rDao" class="aop_exam3.Radio" />
+	<bean id="tDao" class="aop_exam3.Tv" />
 
+	<bean id="beforeAdvice" class="aop_exam3.BeforeAdvice" />
+	<bean id="afterAdvice" 	class="aop_exam3.AfterAdvice" />
 
-	<!-- login check는 advice에서만 존재한다. -->
-	<bean id="advice" class="aop_aspect.Advice" />
-
-	<!-- aspectJ aop -->
+	<aop:aspectj-autoproxy>
+	</aop:aspectj-autoproxy>
 	<aop:config>
-		<aop:aspect id="aspect" ref="advice">
-			<aop:pointcut expression="execution(* select(..))" id="pointcut"/>
-			<aop:before method="loginCheck" pointcut-ref="pointcut"/>
+		<aop:aspect id="before" ref="beforeAdvice">
+			<aop:pointcut expression="     execution(* read(..))
+										|| execution(* update(..))
+										|| execution(* delete(..))" 
+									id="beforePointcut"/>
+			<aop:before method="loginCheck" pointcut-ref="beforePointcut"/>
 		</aop:aspect>
 		
-		<aop:aspect id="around" ref="advice">
-			<aop:pointcut expression="execution(* insert(..))" id="aroundPointcut"/>
-			<aop:around method="around" pointcut-ref="aroundPointcut"/>
+		<aop:aspect id="after" ref="afterAdvice">
+			<aop:pointcut expression="execution(* create(..))" id="afterPointcut"/>
+			<aop:after method="log" pointcut-ref="afterPointcut"/>
 		</aop:aspect>
 	</aop:config>
+	
 	
 </beans>

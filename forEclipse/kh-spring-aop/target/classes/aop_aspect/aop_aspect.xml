@@ -30,9 +30,9 @@
 			<aop:before method="loginCheck" pointcut-ref="pointcut"/>
 		</aop:aspect>
 		
-				<aop:aspect id="around" ref="advice">
+		<aop:aspect id="around" ref="advice">
 			<aop:pointcut expression="execution(* insert(..))" id="aroundPointcut"/>
-			<aop:before method="around" pointcut-ref="aroundPointcut"/>
+			<aop:around method="around" pointcut-ref="aroundPointcut"/>
 		</aop:aspect>
 	</aop:config>
 	
